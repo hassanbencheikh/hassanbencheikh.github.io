@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Cheatsheets :: VaultNotes</title>
+    <title>Cheatsheets :: Ultimate_x64_Notes</title>
     <link>http://localhost:1313/cheatsheets/index.html</link>
-    <description>Programming MySQL Markdown Bash Python C++ Tools Binwalk Steghide</description>
+    <description>Windows Linux Programming Tools</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 28 Aug 2025 04:49:20 -0400</lastBuildDate>
+    <lastBuildDate>Thu, 28 Aug 2025 10:31:04 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/cheatsheets/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Windows</title>
+      <link>http://localhost:1313/cheatsheets/windows/index.html</link>
+      <pubDate>Thu, 28 Aug 2025 10:31:04 -0400</pubDate>
+      <guid>http://localhost:1313/cheatsheets/windows/index.html</guid>
+      <description>runas</description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>http://localhost:1313/cheatsheets/linux/index.html</link>
+      <pubDate>Thu, 28 Aug 2025 10:30:40 -0400</pubDate>
+      <guid>http://localhost:1313/cheatsheets/linux/index.html</guid>
+      <description>apt</description>
+    </item>
     <item>
       <title>Programming</title>
       <link>http://localhost:1313/cheatsheets/programming/index.html</link>

@@ -1,5 +1,125 @@
 var relearn_searchindex = [
   {
+    "breadcrumb": "HOME \u003e Guides",
+    "content": "Into",
+    "description": "Into",
+    "tags": [],
+    "title": "Cryptography",
+    "uri": "/guides/cryptography/index.html"
+  },
+  {
+    "breadcrumb": "HOME \u003e Guides",
+    "content": "Into",
+    "description": "Into",
+    "tags": [],
+    "title": "Forensics",
+    "uri": "/guides/forensics/index.html"
+  },
+  {
+    "breadcrumb": "HOME \u003e Guides \u003e Cryptography",
+    "content": "",
+    "description": "",
+    "tags": [],
+    "title": "Into",
+    "uri": "/guides/cryptography/into/index.html"
+  },
+  {
+    "breadcrumb": "HOME \u003e Guides \u003e Forensics",
+    "content": "",
+    "description": "",
+    "tags": [],
+    "title": "Into",
+    "uri": "/guides/forensics/into/index.html"
+  },
+  {
+    "breadcrumb": "HOME \u003e Guides",
+    "content": "Into",
+    "description": "Into",
+    "tags": [],
+    "title": "Reverse Engineering",
+    "uri": "/guides/reverse-engineering/index.html"
+  },
+  {
+    "breadcrumb": "HOME \u003e Guides \u003e Reverse Engineering",
+    "content": "",
+    "description": "",
+    "tags": [],
+    "title": "Into",
+    "uri": "/guides/reverse-engineering/into/index.html"
+  },
+  {
+    "breadcrumb": "HOME \u003e Guides",
+    "content": "Intro",
+    "description": "Intro",
+    "tags": [],
+    "title": "Binary Exploitation",
+    "uri": "/guides/binary-exploitation/index.html"
+  },
+  {
+    "breadcrumb": "HOME \u003e Guides \u003e Binary Exploitation",
+    "content": "",
+    "description": "",
+    "tags": [],
+    "title": "Intro",
+    "uri": "/guides/binary-exploitation/intro/index.html"
+  },
+  {
+    "breadcrumb": "HOME \u003e Cheatsheets \u003e Windows",
+    "content": "",
+    "description": "",
+    "tags": [],
+    "title": "runas",
+    "uri": "/cheatsheets/windows/runas/index.html"
+  },
+  {
+    "breadcrumb": "HOME \u003e Cheatsheets \u003e Linux",
+    "content": "",
+    "description": "",
+    "tags": [],
+    "title": "apt",
+    "uri": "/cheatsheets/linux/apt/index.html"
+  },
+  {
+    "breadcrumb": "HOME \u003e Cheatsheets",
+    "content": "runas",
+    "description": "runas",
+    "tags": [],
+    "title": "Windows",
+    "uri": "/cheatsheets/windows/index.html"
+  },
+  {
+    "breadcrumb": "HOME \u003e Cheatsheets",
+    "content": "apt",
+    "description": "apt",
+    "tags": [],
+    "title": "Linux",
+    "uri": "/cheatsheets/linux/index.html"
+  },
+  {
+    "breadcrumb": "HOME",
+    "content": "Cryptography Forensics Reverse Engineering Binary Exploitation",
+    "description": "Cryptography Forensics Reverse Engineering Binary Exploitation",
+    "tags": [],
+    "title": "Guides",
+    "uri": "/guides/index.html"
+  },
+  {
+    "breadcrumb": "HOME \u003e Troubleshooting",
+    "content": "",
+    "description": "",
+    "tags": [],
+    "title": "Kali Issues",
+    "uri": "/troubleshooting/kali-issues/index.html"
+  },
+  {
+    "breadcrumb": "HOME",
+    "content": "Kali Issues",
+    "description": "Kali Issues",
+    "tags": [],
+    "title": "Troubleshooting",
+    "uri": "/troubleshooting/index.html"
+  },
+  {
     "breadcrumb": "HOME \u003e Services \u0026 Protocols",
     "content": "",
     "description": "",
@@ -105,8 +225,8 @@ var relearn_searchindex = [
   },
   {
     "breadcrumb": "HOME",
-    "content": "Programming MySQL Markdown Bash Python C++ Tools Binwalk Steghide",
-    "description": "Programming MySQL Markdown Bash Python C++ Tools Binwalk Steghide",
+    "content": "Windows Linux Programming Tools",
+    "description": "Windows Linux Programming Tools",
     "tags": [],
     "title": "Cheatsheets",
     "uri": "/cheatsheets/index.html"
@@ -121,8 +241,8 @@ var relearn_searchindex = [
   },
   {
     "breadcrumb": "",
-    "content": "👋 Welcome! This is the starting point.\nHere you’ll find guides, documentation, and references on different topics.\nServices \u0026 Protocols SSH HTTP FTP DNS Cheatsheets Programming MySQL Markdown Bash Python C++ Tools Binwalk Steghide A Huge by HoXoN.",
-    "description": "Welcome to my notes and resources hub",
+    "content": "👋 Welcome! This is the starting point.\nHere you’ll find guides, documentation, and references on different topics.\nGuides Troubleshooting Services \u0026 Protocols Cheatsheets A Huge by HoXoN.",
+    "description": "👋 Welcome! This is the starting point.\nHere you’ll find guides, documentation, and references on different topics.\nGuides Troubleshooting Services \u0026 Protocols Cheatsheets A Huge by HoXoN.",
     "tags": [],
     "title": "HOME",
     "uri": "/index.html"
@@ -134,6 +254,14 @@ var relearn_searchindex = [
     "tags": [],
     "title": "Categories",
     "uri": "/categories/index.html"
+  },
+  {
+    "breadcrumb": "HOME \u003e ",
+    "content": "",
+    "description": "",
+    "tags": [],
+    "title": "Credits",
+    "uri": "/more/credits_index/index.html"
   },
   {
     "breadcrumb": "HOME",

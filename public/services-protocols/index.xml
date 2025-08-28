@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Services &amp; Protocols :: VaultNotes</title>
+    <title>Services &amp; Protocols :: Ultimate_x64_Notes</title>
     <link>http://localhost:1313/services-protocols/index.html</link>
     <description>SSH HTTP FTP DNS</description>
     <generator>Hugo</generator>

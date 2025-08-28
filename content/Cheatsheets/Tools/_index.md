@@ -7,4 +7,4 @@ draft = true
 +++
 
 
-{{% children depth="999" showhidden="true" %}}
+{{% children depth="1" showhidden="false" %}}

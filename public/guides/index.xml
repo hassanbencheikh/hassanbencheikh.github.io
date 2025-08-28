@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Guides :: Ultimate_x64_Notes</title>
+    <link>http://localhost:1313/guides/index.html</link>
+    <description>Cryptography Forensics Reverse Engineering Binary Exploitation</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 28 Aug 2025 11:06:27 -0400</lastBuildDate>
+    <atom:link href="http://localhost:1313/guides/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cryptography</title>
+      <link>http://localhost:1313/guides/cryptography/index.html</link>
+      <pubDate>Thu, 28 Aug 2025 11:06:27 -0400</pubDate>
+      <guid>http://localhost:1313/guides/cryptography/index.html</guid>
+      <description>Into</description>
+    </item>
+    <item>
+      <title>Forensics</title>
+      <link>http://localhost:1313/guides/forensics/index.html</link>
+      <pubDate>Thu, 28 Aug 2025 11:06:16 -0400</pubDate>
+      <guid>http://localhost:1313/guides/forensics/index.html</guid>
+      <description>Into</description>
+    </item>
+    <item>
+      <title>Reverse Engineering</title>
+      <link>http://localhost:1313/guides/reverse-engineering/index.html</link>
+      <pubDate>Thu, 28 Aug 2025 11:03:55 -0400</pubDate>
+      <guid>http://localhost:1313/guides/reverse-engineering/index.html</guid>
+      <description>Into</description>
+    </item>
+    <item>
+      <title>Binary Exploitation</title>
+      <link>http://localhost:1313/guides/binary-exploitation/index.html</link>
+      <pubDate>Thu, 28 Aug 2025 11:02:48 -0400</pubDate>
+      <guid>http://localhost:1313/guides/binary-exploitation/index.html</guid>
+      <description>Intro</description>
+    </item>
+  </channel>
+</rss>

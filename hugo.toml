@@ -1,26 +1,38 @@
 baseURL = 'https://hassanbencheikh.github.io/'
 languageCode = 'en-us'
-title = 'VaultNotes'
+title = 'Ultimate_x64_Notes'
 
 theme = 'hugo-theme-relearn'
+
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
+
 [params]
   themeVariant = ['zen-dark', 'blue']
-  #showVisitedLinks = true
-  disableLandingPageButton = true
+  #disableLandingPageButton = true
   collapsibleMenu = true
-[menu]
+  showVisitedLinks = true
+  alwaysopen = false
 
+[menu]
   [[menu.shortcuts]]
     name   = "GitHub"
     url    = "https://github.com/hassanbencheikh"
     weight = 1
     pre    = '<i class="fa-brands fa-github fa-fw"></i> '
-
-    [[menu.shortcuts]]
+  [[menu.shortcuts]]
     name   = "LinkedIn"
     url    = "https://www.linkedin.com/in/bencheikh-hassan/"
     weight = 1
     pre    = '<i class="fa-brands fa-linkedin"></i> '
+  [[menu.shortcuts]]
+    name   = "Credits"
+    url    = "/more/credits_index/"
+    weight = 1
+    pre    = '<i class="fa-solid fa-bullhorn"></i> '
+  [[menu.shortcuts]]
+    name   = "About"
+    url    = "/more/credits_index/"
+    weight = 1
+    pre    = '<i class="fa-solid fa-info"></i> '

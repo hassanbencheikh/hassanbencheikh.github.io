@@ -1,6 +1,66 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/guides/cryptography/index.html</loc>
+    <lastmod>2025-08-28T11:06:27-04:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/guides/forensics/index.html</loc>
+    <lastmod>2025-08-28T11:06:16-04:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/guides/cryptography/into/index.html</loc>
+    <lastmod>2025-08-28T11:06:01-04:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/guides/forensics/into/index.html</loc>
+    <lastmod>2025-08-28T11:05:44-04:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/guides/reverse-engineering/index.html</loc>
+    <lastmod>2025-08-28T11:03:55-04:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/guides/reverse-engineering/into/index.html</loc>
+    <lastmod>2025-08-28T11:03:51-04:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/guides/binary-exploitation/index.html</loc>
+    <lastmod>2025-08-28T11:02:48-04:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/guides/binary-exploitation/intro/index.html</loc>
+    <lastmod>2025-08-28T11:02:34-04:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/cheatsheets/windows/runas/index.html</loc>
+    <lastmod>2025-08-28T10:49:34-04:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/cheatsheets/linux/apt/index.html</loc>
+    <lastmod>2025-08-28T10:41:21-04:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/cheatsheets/windows/index.html</loc>
+    <lastmod>2025-08-28T10:31:04-04:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/cheatsheets/linux/index.html</loc>
+    <lastmod>2025-08-28T10:30:40-04:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/guides/index.html</loc>
+    <lastmod>2025-08-28T08:43:27-04:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/troubleshooting/kali-issues/index.html</loc>
+    <lastmod>2025-08-28T08:38:08-04:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/troubleshooting/index.html</loc>
+    <lastmod>2025-08-28T08:33:49-04:00</lastmod>
+  </url>
+  <url>
     <loc>http://localhost:1313/services-protocols/ssh/index.html</loc>
     <lastmod>2025-08-28T07:03:26-04:00</lastmod>
   </url>
@@ -66,6 +126,9 @@
   </url>
   <url>
     <loc>http://localhost:1313/categories/index.html</loc>
+  </url>
+  <url>
+    <loc>http://localhost:1313/more/credits_index/index.html</loc>
   </url>
   <url>
     <loc>http://localhost:1313/tags/index.html</loc>

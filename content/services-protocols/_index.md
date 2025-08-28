@@ -6,4 +6,4 @@ draft = true
   menuPre = '<i class="fas fa-cogs"></i> '
 +++
 
-{{% children depth="999" showhidden="true" %}}
+{{% children depth="1" showhidden="false" %}}
