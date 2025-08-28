@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tools :: CANARY SITE</title>
+    <title>Tools :: VaultNotes</title>
     <link>http://localhost:1313/cheatsheets/tools/index.html</link>
     <description>Binwalk Steghide</description>
     <generator>Hugo</generator>

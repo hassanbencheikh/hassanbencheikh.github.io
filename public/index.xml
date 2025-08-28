@@ -1,19 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>HOME :: CANARY SITE</title>
+    <title>HOME :: VaultNotes</title>
     <link>http://localhost:1313/index.html</link>
-    <description>Cheatsheets Tools Binwalk Steghide A Huge by HoXoN.</description>
+    <description>Welcome to my notes and resources hub</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 27 Aug 2025 10:45:39 -0400</lastBuildDate>
+    <lastBuildDate>Thu, 28 Aug 2025 06:54:35 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Services &amp; Protocols</title>
+      <link>http://localhost:1313/services-protocols/index.html</link>
+      <pubDate>Thu, 28 Aug 2025 06:54:35 -0400</pubDate>
+      <guid>http://localhost:1313/services-protocols/index.html</guid>
+      <description>SSH HTTP FTP DNS</description>
+    </item>
     <item>
       <title>Cheatsheets</title>
       <link>http://localhost:1313/cheatsheets/index.html</link>
       <pubDate>Wed, 27 Aug 2025 10:45:39 -0400</pubDate>
       <guid>http://localhost:1313/cheatsheets/index.html</guid>
-      <description>Tools Binwalk Steghide</description>
+      <description>Programming MySQL Markdown Bash Python C++ Tools Binwalk Steghide</description>
     </item>
   </channel>
 </rss>

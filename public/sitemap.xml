@@ -1,6 +1,50 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/services-protocols/ssh/index.html</loc>
+    <lastmod>2025-08-28T07:03:26-04:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/services-protocols/http/index.html</loc>
+    <lastmod>2025-08-28T07:03:13-04:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/services-protocols/ftp/index.html</loc>
+    <lastmod>2025-08-28T07:03:00-04:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/services-protocols/dns/index.html</loc>
+    <lastmod>2025-08-28T07:02:49-04:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/services-protocols/index.html</loc>
+    <lastmod>2025-08-28T06:54:35-04:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/cheatsheets/programming/index.html</loc>
+    <lastmod>2025-08-28T04:49:20-04:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/cheatsheets/programming/mysql/index.html</loc>
+    <lastmod>2025-08-28T04:48:01-04:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/cheatsheets/programming/markdown/index.html</loc>
+    <lastmod>2025-08-28T04:47:06-04:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/cheatsheets/programming/bash/index.html</loc>
+    <lastmod>2025-08-28T04:44:34-04:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/cheatsheets/programming/python/index.html</loc>
+    <lastmod>2025-08-28T04:43:24-04:00</lastmod>
+  </url>
+  <url>
+    <loc>http://localhost:1313/cheatsheets/programming/c&#43;&#43;/index.html</loc>
+    <lastmod>2025-08-28T04:42:23-04:00</lastmod>
+  </url>
+  <url>
     <loc>http://localhost:1313/cheatsheets/tools/binwalk/index.html</loc>
     <lastmod>2025-08-27T14:22:24-04:00</lastmod>
   </url>

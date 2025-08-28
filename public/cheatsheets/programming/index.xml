@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Programming :: VaultNotes</title>
+    <link>http://localhost:1313/cheatsheets/programming/index.html</link>
+    <description>MySQL Markdown Bash Python C++</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 28 Aug 2025 04:48:01 -0400</lastBuildDate>
+    <atom:link href="http://localhost:1313/cheatsheets/programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MySQL</title>
+      <link>http://localhost:1313/cheatsheets/programming/mysql/index.html</link>
+      <pubDate>Thu, 28 Aug 2025 04:48:01 -0400</pubDate>
+      <guid>http://localhost:1313/cheatsheets/programming/mysql/index.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Markdown</title>
+      <link>http://localhost:1313/cheatsheets/programming/markdown/index.html</link>
+      <pubDate>Thu, 28 Aug 2025 04:47:06 -0400</pubDate>
+      <guid>http://localhost:1313/cheatsheets/programming/markdown/index.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Bash</title>
+      <link>http://localhost:1313/cheatsheets/programming/bash/index.html</link>
+      <pubDate>Thu, 28 Aug 2025 04:44:34 -0400</pubDate>
+      <guid>http://localhost:1313/cheatsheets/programming/bash/index.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>http://localhost:1313/cheatsheets/programming/python/index.html</link>
+      <pubDate>Thu, 28 Aug 2025 04:43:24 -0400</pubDate>
+      <guid>http://localhost:1313/cheatsheets/programming/python/index.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>C&#43;&#43;</title>
+      <link>http://localhost:1313/cheatsheets/programming/c&#43;&#43;/index.html</link>
+      <pubDate>Thu, 28 Aug 2025 04:42:23 -0400</pubDate>
+      <guid>http://localhost:1313/cheatsheets/programming/c&#43;&#43;/index.html</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

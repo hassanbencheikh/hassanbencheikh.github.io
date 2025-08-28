@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Services &amp; Protocols :: VaultNotes</title>
+    <link>http://localhost:1313/services-protocols/index.html</link>
+    <description>SSH HTTP FTP DNS</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 28 Aug 2025 07:03:26 -0400</lastBuildDate>
+    <atom:link href="http://localhost:1313/services-protocols/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SSH</title>
+      <link>http://localhost:1313/services-protocols/ssh/index.html</link>
+      <pubDate>Thu, 28 Aug 2025 07:03:26 -0400</pubDate>
+      <guid>http://localhost:1313/services-protocols/ssh/index.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>HTTP</title>
+      <link>http://localhost:1313/services-protocols/http/index.html</link>
+      <pubDate>Thu, 28 Aug 2025 07:03:13 -0400</pubDate>
+      <guid>http://localhost:1313/services-protocols/http/index.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>FTP</title>
+      <link>http://localhost:1313/services-protocols/ftp/index.html</link>
+      <pubDate>Thu, 28 Aug 2025 07:03:00 -0400</pubDate>
+      <guid>http://localhost:1313/services-protocols/ftp/index.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>DNS</title>
+      <link>http://localhost:1313/services-protocols/dns/index.html</link>
+      <pubDate>Thu, 28 Aug 2025 07:02:49 -0400</pubDate>
+      <guid>http://localhost:1313/services-protocols/dns/index.html</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

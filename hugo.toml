@@ -1,8 +1,26 @@
 baseURL = 'https://hassanbencheikh.github.io/'
 languageCode = 'en-us'
-title = 'CANARY SITE'
+title = 'VaultNotes'
 
 theme = 'hugo-theme-relearn'
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
+[params]
+  themeVariant = ['zen-dark', 'blue']
+  #showVisitedLinks = true
+  disableLandingPageButton = true
+  collapsibleMenu = true
+[menu]
+
+  [[menu.shortcuts]]
+    name   = "GitHub"
+    url    = "https://github.com/hassanbencheikh"
+    weight = 1
+    pre    = '<i class="fa-brands fa-github fa-fw"></i> '
+
+    [[menu.shortcuts]]
+    name   = "LinkedIn"
+    url    = "https://www.linkedin.com/in/bencheikh-hassan/"
+    weight = 1
+    pre    = '<i class="fa-brands fa-linkedin"></i> '
