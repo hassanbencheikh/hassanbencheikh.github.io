@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.131.0">
+    <meta name="generator" content="Relearn 8.0.0+9803d5122ebb3276acea823f476e9eb44f607862">
+    <meta name="description" content="About Tool for searching a given binary image for embedded files and executable code. Specifically, it is designed for identifying files and code embedded inside of firmware images.
+Installation sudo apt install python3-binwalk Usage binwalk [OPTIONS] [FILE] Examples Extract data binwalk --extract --dd=&#34;.&#34; Tux.jpg Tip Use the --include and --exclude arguments to include or exclude specific signatures by name:
+binwalk --exclude=jpeg,png,gif /tmp/firmware.bin The signature names are displayed under the Signature Name column of the signature list.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Binwalk :: CANARY SITE">
+    <meta name="twitter:description" content="About Tool for searching a given binary image for embedded files and executable code. Specifically, it is designed for identifying files and code embedded inside of firmware images.
+Installation sudo apt install python3-binwalk Usage binwalk [OPTIONS] [FILE] Examples Extract data binwalk --extract --dd=&#34;.&#34; Tux.jpg Tip Use the --include and --exclude arguments to include or exclude specific signatures by name:
+binwalk --exclude=jpeg,png,gif /tmp/firmware.bin The signature names are displayed under the Signature Name column of the signature list.">
+    <meta property="og:url" content="http://localhost:1313/cheatsheets/tools/binwalk/index.html">
+    <meta property="og:site_name" content="CANARY SITE">
+    <meta property="og:title" content="Binwalk :: CANARY SITE">
+    <meta property="og:description" content="About Tool for searching a given binary image for embedded files and executable code. Specifically, it is designed for identifying files and code embedded inside of firmware images.
+Installation sudo apt install python3-binwalk Usage binwalk [OPTIONS] [FILE] Examples Extract data binwalk --extract --dd=&#34;.&#34; Tux.jpg Tip Use the --include and --exclude arguments to include or exclude specific signatures by name:
+binwalk --exclude=jpeg,png,gif /tmp/firmware.bin The signature names are displayed under the Signature Name column of the signature list.">
+    <meta property="og:locale" content="en_us">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Cheatsheets">
+    <meta property="article:published_time" content="2025-08-27T14:22:24-04:00">
+    <meta property="article:modified_time" content="2025-08-27T14:22:24-04:00">
+    <meta itemprop="name" content="Binwalk :: CANARY SITE">
+    <meta itemprop="description" content="About Tool for searching a given binary image for embedded files and executable code. Specifically, it is designed for identifying files and code embedded inside of firmware images.
+Installation sudo apt install python3-binwalk Usage binwalk [OPTIONS] [FILE] Examples Extract data binwalk --extract --dd=&#34;.&#34; Tux.jpg Tip Use the --include and --exclude arguments to include or exclude specific signatures by name:
+binwalk --exclude=jpeg,png,gif /tmp/firmware.bin The signature names are displayed under the Signature Name column of the signature list.">
+    <meta itemprop="datePublished" content="2025-08-27T14:22:24-04:00">
+    <meta itemprop="dateModified" content="2025-08-27T14:22:24-04:00">
+    <meta itemprop="wordCount" content="76">
+    <title>Binwalk :: CANARY SITE</title>
+    <link href="/css/auto-complete/auto-complete.min.css?1756368623" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1756368623" defer></script>
+    <script src="/js/search-lunr.js?1756368623" defer></script>
+    <script src="/js/search.js?1756368623" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/searchindex.en.js?1756368623";
+    </script>
+    <script src="/js/lunr/lunr.min.js?1756368623" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1756368623" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1756368623" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1756368623" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['en'];
+    </script>
+    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1756368623" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1756368623" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1756368623" rel="stylesheet">
+    <link href="/css/theme.css?1756368623" rel="stylesheet">
+    <link href="/css/format-html.css?1756368623" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = ``;
+      window.relearn.path='\/cheatsheets\/tools\/binwalk\/index.html';
+      window.relearn.relBasePath='..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..';
+      window.relearn.absBaseUri='http:\/\/localhost:1313';
+      window.relearn.disableAnchorCopy=false;
+      window.relearn.disableAnchorScrolling=false;
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // legal
+      window.relearn.getItem = (s,n) => {return s.getItem(n)};
+      window.relearn.setItem = (s,n,v) => {return s.setItem(n,v)};
+      window.relearn.removeItem = (s,n) => {return s.removeItem(n)};
+      // translations
+      window.T_Copy_to_clipboard = `Copy to clipboard`;
+      window.T_Copied_to_clipboard = `Copied to clipboard!`;
+      window.T_Copy_link_to_clipboard = `Copy link to clipboard`;
+      window.T_Link_copied_to_clipboard = `Copied link to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      // variant stuff
+      window.relearn.themevariants = [ 'auto' ];
+      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant") ?? "";
+        if( variant == window.relearn.customvariantname ){
+        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+          variant = window.relearn.themevariants[0];
+          window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+  </head>
+  <body class="mobile-support html" data-url="/cheatsheets/tools/binwalk/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide"><button class="topbar-control" onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#installation">Installation</a></li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#examples">Examples</a>
+      <ul>
+        <li><a href="#extract-data">Extract data</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">HOME</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/cheatsheets/index.html"><span itemprop="name">Cheatsheets</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/cheatsheets/tools/index.html"><span itemprop="name">Tools</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Binwalk</span><meta itemprop="position" content="4"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/cheatsheets/tools/index.html" title="Tools (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/cheatsheets/tools/steghide/index.html" title="Steghide (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable cheatsheets" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="binwalk">Binwalk</h1>
+
+
+<details open class=" box cstyle notices info">
+  <summary class="box-label" tabindex="-1">
+    <i class="fa-fw fas fa-info-circle"></i> 
+    About
+  </summary>
+  <div class="box-content">
+<p>Tool for searching a given binary image for embedded files and executable code. Specifically, it is designed for identifying files and code embedded inside of firmware images.</p>
+  </div>
+</details>
+<h2 id="installation">Installation</h2>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install python3-binwalk</span></span></code></pre></div>
+<h2 id="usage">Usage</h2>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>binwalk <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>FILE<span style="color:#f92672">]</span></span></span></code></pre></div>
+<h2 id="examples">Examples</h2>
+<h3 id="extract-data">Extract data</h3>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>binwalk --extract --dd<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;.&#34;</span> Tux.jpg</span></span></code></pre></div>
+
+<details open class=" box cstyle notices tip">
+  <summary class="box-label" tabindex="-1">
+    <i class="fa-fw fas fa-lightbulb"></i> 
+    Tip
+  </summary>
+  <div class="box-content">
+<p>Use the <code>--include</code> and <code>--exclude</code> arguments to include or exclude specific signatures by name:</p>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>binwalk --exclude<span style="color:#f92672">=</span>jpeg,png,gif /tmp/firmware.bin</span></span></code></pre></div>
+<p>The signature names are displayed under the <code>Signature Name</code> column of the <a href="https://github.com/ReFirmLabs/binwalk/wiki/Supported-Signatures" rel="external" target="_blank">signature list</a>.</p>
+  </div>
+</details>
+
+  <footer class="footline">
+              <i class='fa-fw fas fa-calendar'></i> Aug 27, 2025
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+<a id="R-logo" href="/index.html" style="display: flex; align-items: center; text-decoration: none;">
+  <img src="/images/ghidra.ico" alt="brand logo" style="height: 2em; margin-right: 0.5em;">
+  CANARY SITE
+</a>
+        </div>
+        <search><form action="/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/index.html"><a class="padding" href="/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="parent " data-nav-id="/cheatsheets/index.html"><a class="padding" href="/cheatsheets/index.html"><i class="fa-solid fa-keyboard"></i> Cheatsheets</a><ul id="R-subsections-3735e222bf0c0345f8490886e0cb5a95" class="collapsible-menu">
+            <li class="parent alwaysopen " data-nav-id="/cheatsheets/tools/index.html"><a class="padding" href="/cheatsheets/tools/index.html"><i class="fa-solid fa-screwdriver-wrench"></i> Tools</a><ul id="R-subsections-1ed1948031a31f7834f447bf1283aec7" class="collapsible-menu">
+            <li class="active " data-nav-id="/cheatsheets/tools/binwalk/index.html"><a class="padding" href="/cheatsheets/tools/binwalk/index.html"><i class="fa-solid fa-wrench"></i> Binwalk</a></li>
+            <li class="" data-nav-id="/cheatsheets/tools/steghide/index.html"><a class="padding" href="/cheatsheets/tools/steghide/index.html"><i class="fa-solid fa-wrench"></i> Steghide</a></li></ul></li></ul></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols">
+          <ul class="">
+          </ul>
+        </div>
+<div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="/js/clipboard/clipboard.min.js?1756368623" defer></script>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1756368623" defer></script>
+    <script src="/js/theme.js?1756368623" defer></script>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+baseURL = 'https://hassanbencheikh.github.io/'
+languageCode = 'en-us'
+title = 'CANARY SITE'
+
+theme = 'hugo-theme-relearn'
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'

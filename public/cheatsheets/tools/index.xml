@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tools :: CANARY SITE</title>
+    <link>http://localhost:1313/cheatsheets/tools/index.html</link>
+    <description>Binwalk Steghide</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 27 Aug 2025 14:22:24 -0400</lastBuildDate>
+    <atom:link href="http://localhost:1313/cheatsheets/tools/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Binwalk</title>
+      <link>http://localhost:1313/cheatsheets/tools/binwalk/index.html</link>
+      <pubDate>Wed, 27 Aug 2025 14:22:24 -0400</pubDate>
+      <guid>http://localhost:1313/cheatsheets/tools/binwalk/index.html</guid>
+      <description>About Tool for searching a given binary image for embedded files and executable code. Specifically, it is designed for identifying files and code embedded inside of firmware images.&#xA;Installation sudo apt install python3-binwalk Usage binwalk [OPTIONS] [FILE] Examples Extract data binwalk --extract --dd=&#34;.&#34; Tux.jpg Tip Use the --include and --exclude arguments to include or exclude specific signatures by name:&#xA;binwalk --exclude=jpeg,png,gif /tmp/firmware.bin The signature names are displayed under the Signature Name column of the signature list.</description>
+    </item>
+    <item>
+      <title>Steghide</title>
+      <link>http://localhost:1313/cheatsheets/tools/steghide/index.html</link>
+      <pubDate>Wed, 27 Aug 2025 10:41:48 -0400</pubDate>
+      <guid>http://localhost:1313/cheatsheets/tools/steghide/index.html</guid>
+      <description>About A steganography program that helps in hiding data in various kind of formats of images, audio files.&#xA;Installation sudo apt install steghide Usage steghide [OPTIONS] Examples Get info steghide info &lt;steg-image-name&gt; Hide data steghide embed -ef &lt;secret-file-name&gt; -cf &lt;target-image-name&gt; Extract data steghide extract -sf &lt;steg-image-name&gt; -xf &lt;target-file-name&gt;</description>
+    </item>
+  </channel>
+</rss>
