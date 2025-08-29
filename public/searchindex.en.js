@@ -1,16 +1,40 @@
 var relearn_searchindex = [
   {
+    "breadcrumb": "HOME \u003e Guides \u003e Reverse Engineering \u003e x86 Course",
+    "content": "A computer application is a sequence of machine instructions stored in memory. The binary numbers that make up the program are meaningful only in how the CPU interprets and executes them.\nBasic System Components The fundamental architecture consists of:\nCPU Memory Input/output devices System bus connecting all components CPU Structure The CPU is composed of four main parts:\nControl Unit\nRetrieves and decodes instructions from memory Manages data transfers between CPU and memory Execution Unit\nCarries out the actual instruction operations Registers\nSmall, fast storage locations inside the CPU for temporary data Flags\nStatus indicators that reflect the outcome of operations Instruction Fetch and Execution (IA-32) On a 32-bit x86 CPU:\nThe control unit fetches a double word (4 bytes) from a specific memory address. The fetched bits form a machine instruction that the execution unit performs. Upon completion, the instruction pointer (EIP) register is updated to point to the next instruction. Manipulating Program Flow By altering the value in EIP, it’s possible to redirect execution to unexpected code paths. This technique underlies many malware exploits.\nSystem Clock Synchronization The entire fetch-execute cycle runs in sync with the system clock, an oscillator that emits square-wave pulses at precise intervals.\nIn the next tutorial, we will explore the IA-32 architecture’s general-purpose registers.",
+    "description": "A computer application is a sequence of machine instructions stored in memory. The binary numbers that make up the program are meaningful only in how the CPU interprets and executes them.\nBasic System Components The fundamental architecture consists of:\nCPU Memory Input/output devices System bus connecting all components CPU Structure The CPU is composed of four main parts:\nControl Unit\nRetrieves and decodes instructions from memory Manages data transfers between CPU and memory Execution Unit",
+    "tags": [],
+    "title": "Architecture",
+    "uri": "/guides/reverse-engineering/x86-course/arch/index.html"
+  },
+  {
+    "breadcrumb": "HOME \u003e Guides \u003e Reverse Engineering \u003e x86 Course",
+    "content": "A bit is the fundamental unit in computing, represented by an electrical state: on (1) or off (0). The binary number system uses base 2, meaning each digit’s place value is twice the value of the position to its right. Only two digits exist in binary: 0 and 1. In contrast, the decimal system is base 10, using digits 0–9; for example, decimal 15 = (1 × 10) + (5 × 1). The same value in binary is 1111 (1 × 2³ + 1 × 2² + 1 × 2¹ + 1 × 2⁰ = 15). Binary simplifies computer and hardware design by matching the on/off nature of electronic circuits to its two-digit system. Eight bits make one byte. Four bits form a nibble, which covers values 0–15. Hexadecimal is base 16. Each digit’s place value is 16× the value of the position to its right. Hex uses 16 symbols: 0–9 for values zero through nine, and A–F for values ten through fifteen. Converting between bases uses the general formula: where b is the base (2 for binary, 10 for decimal, 16 for hex).",
+    "description": "A bit is the fundamental unit in computing, represented by an electrical state: on (1) or off (0). The binary number system uses base 2, meaning each digit’s place value is twice the value of the position to its right. Only two digits exist in binary: 0 and 1. In contrast, the decimal system is base 10, using digits 0–9; for example, decimal 15 = (1 × 10) + (5 × 1).",
+    "tags": [],
+    "title": "Number System",
+    "uri": "/guides/reverse-engineering/x86-course/number-system/index.html"
+  },
+  {
+    "breadcrumb": "HOME \u003e Guides \u003e Reverse Engineering",
+    "content": "x86 Assembly Language x86 Assembly is a family of backward-compatible languages dating back to the Intel 8000 series of microprocessors. It uses mnemonics to represent CPU instructions and produces object code for x86 processors. Syntax Variants Two main syntaxes exist: AT\u0026T (source before destination) and Intel (destination before source). Intel syntax is dominant when disassembling or debugging both Windows PE and Linux ELF binaries. info A PE (Portable Executable) file is a file format used by Windows for executables (.exe), dynamic libraries (.dll) and system drivers (.sys), which contains information needed by the operating system to load and execute the code.\nAn ELF (Executable and Linkable Format) file is a standard file format for executable files, object code, shared libraries, and core dumps on Unix-like operating systems like Linux.\nEnvironment and Platform Focus Tutorials will concentrate on Linux Assembly using Intel syntax , paired with C source code for disassembly practice. Architecture Emphasis The course emphasizes 32-bit architecture, since 32-bit programs run on both 32-bit and 64-bit systems, making them common targets. x32 == x86 ? The terms x86 and x32 are often confused, but x86 is a family of instruction set architectures from Intel and AMD that includes both 16-bit and 32-bit (and even 64-bit \u003e x86_64) processors, while x32 is not a standard term; 32-bit systems are correctly referred to as “x86” or “IA-32”. The term “x86” comes from the Intel 8086 processor, and its successors like the 80186, 80286, 80386, and 80486, all of which ended in “86”.",
+    "description": "x86 Assembly Language x86 Assembly is a family of backward-compatible languages dating back to the Intel 8000 series of microprocessors. It uses mnemonics to represent CPU instructions and produces object code for x86 processors. Syntax Variants Two main syntaxes exist: AT\u0026T (source before destination) and Intel (destination before source). Intel syntax is dominant when disassembling or debugging both Windows PE and Linux ELF binaries. info A PE (Portable Executable) file is a file format used by Windows for executables (.",
+    "tags": [],
+    "title": "x86 Course",
+    "uri": "/guides/reverse-engineering/x86-course/index.html"
+  },
+  {
     "breadcrumb": "HOME \u003e Guides",
-    "content": "Into",
-    "description": "Into",
+    "content": "Intro",
+    "description": "Intro",
     "tags": [],
     "title": "Cryptography",
     "uri": "/guides/cryptography/index.html"
   },
   {
     "breadcrumb": "HOME \u003e Guides",
-    "content": "Into",
-    "description": "Into",
+    "content": "Intro",
+    "description": "Intro",
     "tags": [],
     "title": "Forensics",
     "uri": "/guides/forensics/index.html"
@@ -20,7 +44,7 @@ var relearn_searchindex = [
     "content": "",
     "description": "",
     "tags": [],
-    "title": "Into",
+    "title": "Intro",
     "uri": "/guides/cryptography/into/index.html"
   },
   {
@@ -28,24 +52,24 @@ var relearn_searchindex = [
     "content": "",
     "description": "",
     "tags": [],
-    "title": "Into",
+    "title": "Intro",
     "uri": "/guides/forensics/into/index.html"
   },
   {
     "breadcrumb": "HOME \u003e Guides",
-    "content": "Into",
-    "description": "Into",
+    "content": "Introduction Reverse engineering isn’t just about reading assembly instructions, loading your program and hunting for strings . It’s a detective story in which you trace data flows, identify encryption routines, and uncover logic flaws that reveal the program’s objective . Mastering this craft equips you to find vulnerabilities in real-world software and malware.\nx86 Course Techniques",
+    "description": "Introduction Reverse engineering isn’t just about reading assembly instructions, loading your program and hunting for strings . It’s a detective story in which you trace data flows, identify encryption routines, and uncover logic flaws that reveal the program’s objective . Mastering this craft equips you to find vulnerabilities in real-world software and malware.\nx86 Course Techniques",
     "tags": [],
     "title": "Reverse Engineering",
     "uri": "/guides/reverse-engineering/index.html"
   },
   {
     "breadcrumb": "HOME \u003e Guides \u003e Reverse Engineering",
-    "content": "",
-    "description": "",
+    "content": "There are two basic techniques that you can employ when analyzing programs. The first being static analysis and the other being dynamic analysis.\nStatic analysis : examines a program’s executable without running it, using decompilers and disassemblers to reveal its code structure, control flow, and embedded data. Dynamic analysis : executes the program in a controlled environment, leveraging debuggers and instrumentation tools to observe its runtime behavior, memory usage, and logic paths.",
+    "description": "There are two basic techniques that you can employ when analyzing programs. The first being static analysis and the other being dynamic analysis.\nStatic analysis : examines a program’s executable without running it, using decompilers and disassemblers to reveal its code structure, control flow, and embedded data. Dynamic analysis : executes the program in a controlled environment, leveraging debuggers and instrumentation tools to observe its runtime behavior, memory usage, and logic paths.",
     "tags": [],
-    "title": "Into",
-    "uri": "/guides/reverse-engineering/into/index.html"
+    "title": "Techniques",
+    "uri": "/guides/reverse-engineering/techniques/index.html"
   },
   {
     "breadcrumb": "HOME \u003e Guides",

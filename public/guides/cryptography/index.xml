@@ -3,13 +3,13 @@
   <channel>
     <title>Cryptography :: Ultimate_x64_Notes</title>
     <link>http://localhost:1313/guides/cryptography/index.html</link>
-    <description>Into</description>
+    <description>Intro</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 28 Aug 2025 11:06:01 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/guides/cryptography/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Into</title>
+      <title>Intro</title>
       <link>http://localhost:1313/guides/cryptography/into/index.html</link>
       <pubDate>Thu, 28 Aug 2025 11:06:01 -0400</pubDate>
       <guid>http://localhost:1313/guides/cryptography/into/index.html</guid>

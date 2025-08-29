@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>x86 Course :: Ultimate_x64_Notes</title>
+    <link>http://localhost:1313/guides/reverse-engineering/x86-course/index.html</link>
+    <description>x86 Assembly Language x86 Assembly is a family of backward-compatible languages dating back to the Intel 8000 series of microprocessors. It uses mnemonics to represent CPU instructions and produces object code for x86 processors. Syntax Variants Two main syntaxes exist: AT&amp;T (source before destination) and Intel (destination before source). Intel syntax is dominant when disassembling or debugging both Windows PE and Linux ELF binaries. info A PE (Portable Executable) file is a file format used by Windows for executables (.</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 28 Aug 2025 20:32:23 -0400</lastBuildDate>
+    <atom:link href="http://localhost:1313/guides/reverse-engineering/x86-course/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Architecture</title>
+      <link>http://localhost:1313/guides/reverse-engineering/x86-course/arch/index.html</link>
+      <pubDate>Thu, 28 Aug 2025 20:32:23 -0400</pubDate>
+      <guid>http://localhost:1313/guides/reverse-engineering/x86-course/arch/index.html</guid>
+      <description>A computer application is a sequence of machine instructions stored in memory. The binary numbers that make up the program are meaningful only in how the CPU interprets and executes them.&#xA;Basic System Components The fundamental architecture consists of:&#xA;CPU Memory Input/output devices System bus connecting all components CPU Structure The CPU is composed of four main parts:&#xA;Control Unit&#xA;Retrieves and decodes instructions from memory Manages data transfers between CPU and memory Execution Unit</description>
+    </item>
+    <item>
+      <title>Number System</title>
+      <link>http://localhost:1313/guides/reverse-engineering/x86-course/number-system/index.html</link>
+      <pubDate>Thu, 28 Aug 2025 19:27:31 -0400</pubDate>
+      <guid>http://localhost:1313/guides/reverse-engineering/x86-course/number-system/index.html</guid>
+      <description>A bit is the fundamental unit in computing, represented by an electrical state: on (1) or off (0). The binary number system uses base 2, meaning each digit’s place value is twice the value of the position to its right. Only two digits exist in binary: 0 and 1. In contrast, the decimal system is base 10, using digits 0–9; for example, decimal 15 = (1 × 10) + (5 × 1).</description>
+    </item>
+  </channel>
+</rss>

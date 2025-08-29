@@ -5,47 +5,49 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.131.0">
     <meta name="generator" content="Relearn 8.0.0+9803d5122ebb3276acea823f476e9eb44f607862">
-    <meta name="description" content="">
+    <meta name="description" content="x86 Assembly Language x86 Assembly is a family of backward-compatible languages dating back to the Intel 8000 series of microprocessors. It uses mnemonics to represent CPU instructions and produces object code for x86 processors. Syntax Variants Two main syntaxes exist: AT&amp;T (source before destination) and Intel (destination before source). Intel syntax is dominant when disassembling or debugging both Windows PE and Linux ELF binaries. info A PE (Portable Executable) file is a file format used by Windows for executables (.">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="apt :: Ultimate_x64_Notes">
-    <meta property="og:url" content="http://localhost:1313/cheatsheets/linux/apt/index.html">
+    <meta name="twitter:title" content="x86 Course :: Ultimate_x64_Notes">
+    <meta name="twitter:description" content="x86 Assembly Language x86 Assembly is a family of backward-compatible languages dating back to the Intel 8000 series of microprocessors. It uses mnemonics to represent CPU instructions and produces object code for x86 processors. Syntax Variants Two main syntaxes exist: AT&amp;T (source before destination) and Intel (destination before source). Intel syntax is dominant when disassembling or debugging both Windows PE and Linux ELF binaries. info A PE (Portable Executable) file is a file format used by Windows for executables (.">
+    <meta property="og:url" content="http://localhost:1313/guides/reverse-engineering/x86-course/index.html">
     <meta property="og:site_name" content="Ultimate_x64_Notes">
-    <meta property="og:title" content="apt :: Ultimate_x64_Notes">
+    <meta property="og:title" content="x86 Course :: Ultimate_x64_Notes">
+    <meta property="og:description" content="x86 Assembly Language x86 Assembly is a family of backward-compatible languages dating back to the Intel 8000 series of microprocessors. It uses mnemonics to represent CPU instructions and produces object code for x86 processors. Syntax Variants Two main syntaxes exist: AT&amp;T (source before destination) and Intel (destination before source). Intel syntax is dominant when disassembling or debugging both Windows PE and Linux ELF binaries. info A PE (Portable Executable) file is a file format used by Windows for executables (.">
     <meta property="og:locale" content="en_us">
-    <meta property="og:type" content="article">
-    <meta property="article:section" content="Cheatsheets">
-    <meta property="article:published_time" content="2025-08-28T10:41:21-04:00">
-    <meta property="article:modified_time" content="2025-08-28T10:41:21-04:00">
-    <meta itemprop="name" content="apt :: Ultimate_x64_Notes">
-    <meta itemprop="datePublished" content="2025-08-28T10:41:21-04:00">
-    <meta itemprop="dateModified" content="2025-08-28T10:41:21-04:00">
-    <title>apt :: Ultimate_x64_Notes</title>
-    <link href="/css/auto-complete/auto-complete.min.css?1756430313" rel="stylesheet">
-    <script src="/js/auto-complete/auto-complete.min.js?1756430313" defer></script>
-    <script src="/js/search-lunr.js?1756430313" defer></script>
-    <script src="/js/search.js?1756430313" defer></script>
+    <meta property="og:type" content="website">
+    <meta itemprop="name" content="x86 Course :: Ultimate_x64_Notes">
+    <meta itemprop="description" content="x86 Assembly Language x86 Assembly is a family of backward-compatible languages dating back to the Intel 8000 series of microprocessors. It uses mnemonics to represent CPU instructions and produces object code for x86 processors. Syntax Variants Two main syntaxes exist: AT&amp;T (source before destination) and Intel (destination before source). Intel syntax is dominant when disassembling or debugging both Windows PE and Linux ELF binaries. info A PE (Portable Executable) file is a file format used by Windows for executables (.">
+    <meta itemprop="datePublished" content="2025-08-28T18:23:32-04:00">
+    <meta itemprop="dateModified" content="2025-08-28T18:23:32-04:00">
+    <meta itemprop="wordCount" content="251">
+    <title>x86 Course :: Ultimate_x64_Notes</title>
+    <link href="/guides/reverse-engineering/x86-course/index.xml" rel="alternate" type="application/rss+xml" title="x86 Course :: Ultimate_x64_Notes">
+    <link href="/css/auto-complete/auto-complete.min.css?1756433016" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1756433016" defer></script>
+    <script src="/js/search-lunr.js?1756433016" defer></script>
+    <script src="/js/search.js?1756433016" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/searchindex.en.js?1756430313";
+      window.relearn.index_js_url="/searchindex.en.js?1756433016";
     </script>
-    <script src="/js/lunr/lunr.min.js?1756430313" defer></script>
-    <script src="/js/lunr/lunr.stemmer.support.min.js?1756430313" defer></script>
-    <script src="/js/lunr/lunr.multi.min.js?1756430313" defer></script>
-    <script src="/js/lunr/lunr.en.min.js?1756430313" defer></script>
+    <script src="/js/lunr/lunr.min.js?1756433016" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1756433016" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1756433016" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1756433016" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1756430313" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1756430313" rel="stylesheet"></noscript>
-    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1756430313" rel="stylesheet">
-    <link href="/css/theme.css?1756430313" rel="stylesheet">
-    <link href="/css/format-html.css?1756430313" rel="stylesheet" id="R-format-style">
+    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1756433016" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1756433016" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1756433016" rel="stylesheet">
+    <link href="/css/theme.css?1756433016" rel="stylesheet">
+    <link href="/css/format-html.css?1756433016" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
       window.relearn.min = ``;
-      window.relearn.path='\/cheatsheets\/linux\/apt\/index.html';
+      window.relearn.path='\/guides\/reverse-engineering\/x86-course\/index.html';
       window.relearn.relBasePath='..\/..\/..';
       window.relearn.relBaseUri='..\/..\/..';
       window.relearn.absBaseUri='http:\/\/localhost:1313';
@@ -95,7 +97,7 @@
       window.relearn.markVariant();
     </script>
   </head>
-  <body class="mobile-support html" data-url="/cheatsheets/linux/apt/index.html">
+  <body class="mobile-support html" data-url="/guides/reverse-engineering/x86-course/index.html">
     <div id="R-body" class="default-animation">
       <div id="R-body-overlay"></div>
       <nav id="R-topbar">
@@ -106,17 +108,23 @@
             </div>
             <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
               <div class="topbar-content">
-                <div class="topbar-content-wrapper"> 
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#x86-assembly-language">x86 Assembly Language</a></li>
+    <li><a href="#environment-and-platform-focus">Environment and Platform Focus</a></li>
+  </ul>
+</nav>
                 </div>
               </div>
             </div>
           </div>
-          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">HOME</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/cheatsheets/index.html"><span itemprop="name">Cheatsheets</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/cheatsheets/linux/index.html"><span itemprop="name">Linux</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">apt</span><meta itemprop="position" content="4"></li>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">HOME</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/guides/index.html"><span itemprop="name">Guides</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/guides/reverse-engineering/index.html"><span itemprop="name">Reverse Engineering</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">x86 Course</span><meta itemprop="position" content="4"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
-            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/cheatsheets/linux/index.html" title="Linux (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/guides/reverse-engineering/index.html" title="Reverse Engineering (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
             </div>
-            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/cheatsheets/programming/index.html" title="Programming (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/guides/reverse-engineering/x86-course/arch/index.html" title="Architecture (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
             </div>
             <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
               <div class="topbar-content">
@@ -130,14 +138,61 @@
         </div>
       </nav>
       <div id="R-main-overlay"></div>
-      <main id="R-body-inner" class="highlightable cheatsheets" tabindex="-1">
+      <main id="R-body-inner" class="highlightable guides" tabindex="-1">
         <div class="flex-block-wrapper">
 <article class="default">
   <header class="headline">
   </header>
 
-<h1 id="apt">apt</h1>
+<h1 id="x86-course">x86 Course</h1>
 
+<h2 id="x86-assembly-language">x86 Assembly Language</h2>
+
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/75gBFiFtAb8?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
+      ></iframe>
+    </div>
+
+<ul>
+<li>x86 Assembly is a family of backward-compatible languages dating back to the Intel 8000 series of microprocessors.</li>
+<li>It uses mnemonics to represent CPU instructions and produces object code for x86 processors.</li>
+<li><strong>Syntax Variants</strong> Two main syntaxes exist: <strong>AT&amp;T</strong> (source before destination) and <strong>Intel</strong> (destination before source).</li>
+<li>Intel syntax is dominant when disassembling or debugging both Windows PE and Linux ELF binaries.</li>
+</ul>
+
+<details open class=" box cstyle notices info">
+  <summary class="box-label" tabindex="-1">
+    <i class="fa-fw fas fa-info-circle"></i> 
+    info
+  </summary>
+  <div class="box-content">
+<ul>
+<li>
+<p>A PE <code>(Portable Executable)</code> file is a file format used by Windows for executables (.exe), dynamic libraries (.dll) and system drivers (.sys), which contains information needed by the operating system to load and execute the code.</p>
+</li>
+<li>
+<p>An ELF <code>(Executable and Linkable Format)</code> file is a standard file format for executable files, object code, shared libraries, and core dumps on Unix-like operating systems like Linux.</p>
+</li>
+</ul>
+  </div>
+</details>
+<h2 id="environment-and-platform-focus">Environment and Platform Focus</h2>
+<ul>
+<li>Tutorials will concentrate on Linux Assembly using <span class="badge cstyle blue badge-with-title"><span class="badge-title"><i class="fa-fw fas fa-rocket"></i></span><span class="badge-content">Intel syntax</span></span> , paired with <span class="badge cstyle red badge-with-title"><span class="badge-title"><i class="fa-fw fas fa-skull-crossbones"></i></span><span class="badge-content">C source code</span></span> for disassembly practice.</li>
+<li><strong>Architecture Emphasis</strong> The course emphasizes 32-bit architecture, since 32-bit programs run on both 32-bit and 64-bit systems, making them common targets.</li>
+</ul>
+
+<details open class=" box cstyle notices note">
+  <summary class="box-label" tabindex="-1">
+    <i class="fa-fw fas fa-exclamation-circle"></i> 
+    x32 == x86 ?
+  </summary>
+  <div class="box-content">
+<p>The terms x86 and x32 are often confused, but x86 is a family of instruction set architectures from Intel and AMD that includes both 16-bit and 32-bit (and even 64-bit &gt; x86_64) processors, while x32 is not a standard term; 32-bit systems are <strong>correctly referred to as &ldquo;x86&rdquo;</strong> or &ldquo;IA-32&rdquo;. The term &ldquo;x86&rdquo; comes from the Intel 8086 processor, and its successors like the 80186, 80286, 80386, and 80486, all of which ended in &ldquo;86&rdquo;.</p>
+  </div>
+</details>
 
   <footer class="footline">
               <i class='fa-fw fas fa-calendar'></i> Aug 28, 2025
@@ -187,13 +242,13 @@
       <div id="R-content-wrapper" class="highlightable">
         <div class="R-sidebarmenu R-shortcutmenu-main">
           <ul class="enlarge morespace collapsible-menu">
-            <li class="" data-nav-id="/guides/index.html"><input type="checkbox" id="R-section-8fc2fd7736125e87cab8840a86c2af5a" aria-controls="R-subsections-8fc2fd7736125e87cab8840a86c2af5a"><label for="R-section-8fc2fd7736125e87cab8840a86c2af5a"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Guides</span></label><a class="padding" href="/guides/index.html"><i class="fa-solid fa-book"></i> Guides<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-8fc2fd7736125e87cab8840a86c2af5a" class="collapsible-menu">
+            <li class="parent " data-nav-id="/guides/index.html"><input type="checkbox" id="R-section-8fc2fd7736125e87cab8840a86c2af5a" aria-controls="R-subsections-8fc2fd7736125e87cab8840a86c2af5a" checked><label for="R-section-8fc2fd7736125e87cab8840a86c2af5a"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Guides</span></label><a class="padding" href="/guides/index.html"><i class="fa-solid fa-book"></i> Guides<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-8fc2fd7736125e87cab8840a86c2af5a" class="collapsible-menu">
             <li class="" data-nav-id="/guides/cryptography/index.html"><input type="checkbox" id="R-section-72d187d8fca36be3f714de363304e311" aria-controls="R-subsections-72d187d8fca36be3f714de363304e311"><label for="R-section-72d187d8fca36be3f714de363304e311"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Cryptography</span></label><a class="padding" href="/guides/cryptography/index.html"><i class="fas fa-lock"></i> Cryptography<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-72d187d8fca36be3f714de363304e311" class="collapsible-menu">
             <li class="" data-nav-id="/guides/cryptography/into/index.html"><a class="padding" href="/guides/cryptography/into/index.html"><i class="fa-solid fa-book-open"></i> Intro<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
             <li class="" data-nav-id="/guides/forensics/index.html"><input type="checkbox" id="R-section-3ff6105cb3128fa0b6c0d258baad817a" aria-controls="R-subsections-3ff6105cb3128fa0b6c0d258baad817a"><label for="R-section-3ff6105cb3128fa0b6c0d258baad817a"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Forensics</span></label><a class="padding" href="/guides/forensics/index.html"><i class="fas fa-search"></i> Forensics<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-3ff6105cb3128fa0b6c0d258baad817a" class="collapsible-menu">
             <li class="" data-nav-id="/guides/forensics/into/index.html"><a class="padding" href="/guides/forensics/into/index.html"><i class="fa-solid fa-book-open"></i> Intro<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
-            <li class="" data-nav-id="/guides/reverse-engineering/index.html"><input type="checkbox" id="R-section-3d65eeeb594a4791e0e8c82bf8a30a44" aria-controls="R-subsections-3d65eeeb594a4791e0e8c82bf8a30a44"><label for="R-section-3d65eeeb594a4791e0e8c82bf8a30a44"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Reverse Engineering</span></label><a class="padding" href="/guides/reverse-engineering/index.html"><i class="fas fa-undo-alt"></i> Reverse Engineering<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-3d65eeeb594a4791e0e8c82bf8a30a44" class="collapsible-menu">
-            <li class="" data-nav-id="/guides/reverse-engineering/x86-course/index.html"><input type="checkbox" id="R-section-e36150a455e94c876ad23552dd503163" aria-controls="R-subsections-e36150a455e94c876ad23552dd503163"><label for="R-section-e36150a455e94c876ad23552dd503163"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu x86 Course</span></label><a class="padding" href="/guides/reverse-engineering/x86-course/index.html"><i class="fa-solid fa-microchip"></i> x86 Course<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-e36150a455e94c876ad23552dd503163" class="collapsible-menu">
+            <li class="parent " data-nav-id="/guides/reverse-engineering/index.html"><input type="checkbox" id="R-section-3d65eeeb594a4791e0e8c82bf8a30a44" aria-controls="R-subsections-3d65eeeb594a4791e0e8c82bf8a30a44" checked><label for="R-section-3d65eeeb594a4791e0e8c82bf8a30a44"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Reverse Engineering</span></label><a class="padding" href="/guides/reverse-engineering/index.html"><i class="fas fa-undo-alt"></i> Reverse Engineering<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-3d65eeeb594a4791e0e8c82bf8a30a44" class="collapsible-menu">
+            <li class="active parent " data-nav-id="/guides/reverse-engineering/x86-course/index.html"><input type="checkbox" id="R-section-e36150a455e94c876ad23552dd503163" aria-controls="R-subsections-e36150a455e94c876ad23552dd503163" checked><label for="R-section-e36150a455e94c876ad23552dd503163"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu x86 Course</span></label><a class="padding" href="/guides/reverse-engineering/x86-course/index.html"><i class="fa-solid fa-microchip"></i> x86 Course<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-e36150a455e94c876ad23552dd503163" class="collapsible-menu">
             <li class="" data-nav-id="/guides/reverse-engineering/x86-course/arch/index.html"><a class="padding" href="/guides/reverse-engineering/x86-course/arch/index.html">Architecture<i class="fa-fw fas fa-check read-icon"></i></a></li>
             <li class="" data-nav-id="/guides/reverse-engineering/x86-course/number-system/index.html"><a class="padding" href="/guides/reverse-engineering/x86-course/number-system/index.html">Number System<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
             <li class="" data-nav-id="/guides/reverse-engineering/techniques/index.html"><a class="padding" href="/guides/reverse-engineering/techniques/index.html"><i class="fa-solid fa-book-open"></i> Techniques<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
@@ -206,11 +261,11 @@
             <li class="" data-nav-id="/services-protocols/http/index.html"><a class="padding" href="/services-protocols/http/index.html"><i class="fas fa-gear"></i> HTTP<i class="fa-fw fas fa-check read-icon"></i></a></li>
             <li class="" data-nav-id="/services-protocols/ftp/index.html"><a class="padding" href="/services-protocols/ftp/index.html"><i class="fas fa-gear"></i> FTP<i class="fa-fw fas fa-check read-icon"></i></a></li>
             <li class="" data-nav-id="/services-protocols/dns/index.html"><a class="padding" href="/services-protocols/dns/index.html"><i class="fas fa-gear"></i> DNS<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
-            <li class="parent " data-nav-id="/cheatsheets/index.html"><input type="checkbox" id="R-section-3735e222bf0c0345f8490886e0cb5a95" aria-controls="R-subsections-3735e222bf0c0345f8490886e0cb5a95" checked><label for="R-section-3735e222bf0c0345f8490886e0cb5a95"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Cheatsheets</span></label><a class="padding" href="/cheatsheets/index.html"><i class="fa-solid fa-keyboard"></i> Cheatsheets<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-3735e222bf0c0345f8490886e0cb5a95" class="collapsible-menu">
+            <li class="" data-nav-id="/cheatsheets/index.html"><input type="checkbox" id="R-section-3735e222bf0c0345f8490886e0cb5a95" aria-controls="R-subsections-3735e222bf0c0345f8490886e0cb5a95"><label for="R-section-3735e222bf0c0345f8490886e0cb5a95"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Cheatsheets</span></label><a class="padding" href="/cheatsheets/index.html"><i class="fa-solid fa-keyboard"></i> Cheatsheets<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-3735e222bf0c0345f8490886e0cb5a95" class="collapsible-menu">
             <li class="" data-nav-id="/cheatsheets/windows/index.html"><input type="checkbox" id="R-section-e11d8de730fc0e838a6428ae89ea90fd" aria-controls="R-subsections-e11d8de730fc0e838a6428ae89ea90fd"><label for="R-section-e11d8de730fc0e838a6428ae89ea90fd"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Windows</span></label><a class="padding" href="/cheatsheets/windows/index.html"><i class="fab fa-windows"></i> Windows<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-e11d8de730fc0e838a6428ae89ea90fd" class="collapsible-menu">
             <li class="" data-nav-id="/cheatsheets/windows/runas/index.html"><a class="padding" href="/cheatsheets/windows/runas/index.html"><i class="fas fa-terminal"></i> runas<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
-            <li class="parent " data-nav-id="/cheatsheets/linux/index.html"><input type="checkbox" id="R-section-3b4fb2b1be094b6ea6b3bd40c789eb3d" aria-controls="R-subsections-3b4fb2b1be094b6ea6b3bd40c789eb3d" checked><label for="R-section-3b4fb2b1be094b6ea6b3bd40c789eb3d"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Linux</span></label><a class="padding" href="/cheatsheets/linux/index.html"><i class="fab fa-linux"></i> Linux<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-3b4fb2b1be094b6ea6b3bd40c789eb3d" class="collapsible-menu">
-            <li class="active " data-nav-id="/cheatsheets/linux/apt/index.html"><a class="padding" href="/cheatsheets/linux/apt/index.html"><i class="fas fa-terminal"></i> apt<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="" data-nav-id="/cheatsheets/linux/index.html"><input type="checkbox" id="R-section-3b4fb2b1be094b6ea6b3bd40c789eb3d" aria-controls="R-subsections-3b4fb2b1be094b6ea6b3bd40c789eb3d"><label for="R-section-3b4fb2b1be094b6ea6b3bd40c789eb3d"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Linux</span></label><a class="padding" href="/cheatsheets/linux/index.html"><i class="fab fa-linux"></i> Linux<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-3b4fb2b1be094b6ea6b3bd40c789eb3d" class="collapsible-menu">
+            <li class="" data-nav-id="/cheatsheets/linux/apt/index.html"><a class="padding" href="/cheatsheets/linux/apt/index.html"><i class="fas fa-terminal"></i> apt<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
             <li class="" data-nav-id="/cheatsheets/programming/index.html"><input type="checkbox" id="R-section-264d2d0f2489dfb9da431217ce75d49f" aria-controls="R-subsections-264d2d0f2489dfb9da431217ce75d49f"><label for="R-section-264d2d0f2489dfb9da431217ce75d49f"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Programming</span></label><a class="padding" href="/cheatsheets/programming/index.html"><i class="fa-solid fa-code"></i> Programming<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-264d2d0f2489dfb9da431217ce75d49f" class="collapsible-menu">
             <li class="" data-nav-id="/cheatsheets/programming/mysql/index.html"><a class="padding" href="/cheatsheets/programming/mysql/index.html"><i class="fa-solid fa-layer-group"></i> MySQL<i class="fa-fw fas fa-check read-icon"></i></a></li>
             <li class="" data-nav-id="/cheatsheets/programming/markdown/index.html"><a class="padding" href="/cheatsheets/programming/markdown/index.html"><i class="fa-solid fa-layer-group"></i> Markdown<i class="fa-fw fas fa-check read-icon"></i></a></li>
@@ -267,8 +322,8 @@
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/js/clipboard/clipboard.min.js?1756430313" defer></script>
-    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1756430313" defer></script>
-    <script src="/js/theme.js?1756430313" defer></script>
+    <script src="/js/clipboard/clipboard.min.js?1756433016" defer></script>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1756433016" defer></script>
+    <script src="/js/theme.js?1756433016" defer></script>
   </body>
 </html>

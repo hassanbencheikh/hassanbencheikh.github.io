@@ -13,21 +13,21 @@
       <link>http://localhost:1313/guides/cryptography/index.html</link>
       <pubDate>Thu, 28 Aug 2025 11:06:27 -0400</pubDate>
       <guid>http://localhost:1313/guides/cryptography/index.html</guid>
-      <description>Into</description>
+      <description>Intro</description>
     </item>
     <item>
       <title>Forensics</title>
       <link>http://localhost:1313/guides/forensics/index.html</link>
       <pubDate>Thu, 28 Aug 2025 11:06:16 -0400</pubDate>
       <guid>http://localhost:1313/guides/forensics/index.html</guid>
-      <description>Into</description>
+      <description>Intro</description>
     </item>
     <item>
       <title>Reverse Engineering</title>
       <link>http://localhost:1313/guides/reverse-engineering/index.html</link>
       <pubDate>Thu, 28 Aug 2025 11:03:55 -0400</pubDate>
       <guid>http://localhost:1313/guides/reverse-engineering/index.html</guid>
-      <description>Into</description>
+      <description>Introduction Reverse engineering isn’t just about reading assembly instructions, loading your program and hunting for strings . It’s a detective story in which you trace data flows, identify encryption routines, and uncover logic flaws that reveal the program’s objective . Mastering this craft equips you to find vulnerabilities in real-world software and malware.&#xA;x86 Course Techniques</description>
     </item>
     <item>
       <title>Binary Exploitation</title>

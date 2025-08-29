@@ -3,17 +3,24 @@
   <channel>
     <title>Reverse Engineering :: Ultimate_x64_Notes</title>
     <link>http://localhost:1313/guides/reverse-engineering/index.html</link>
-    <description>Into</description>
+    <description>Introduction Reverse engineering isn’t just about reading assembly instructions, loading your program and hunting for strings . It’s a detective story in which you trace data flows, identify encryption routines, and uncover logic flaws that reveal the program’s objective . Mastering this craft equips you to find vulnerabilities in real-world software and malware.&#xA;x86 Course Techniques</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 28 Aug 2025 11:03:51 -0400</lastBuildDate>
+    <lastBuildDate>Thu, 28 Aug 2025 18:23:32 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/guides/reverse-engineering/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Into</title>
-      <link>http://localhost:1313/guides/reverse-engineering/into/index.html</link>
+      <title>x86 Course</title>
+      <link>http://localhost:1313/guides/reverse-engineering/x86-course/index.html</link>
+      <pubDate>Thu, 28 Aug 2025 18:23:32 -0400</pubDate>
+      <guid>http://localhost:1313/guides/reverse-engineering/x86-course/index.html</guid>
+      <description>x86 Assembly Language x86 Assembly is a family of backward-compatible languages dating back to the Intel 8000 series of microprocessors. It uses mnemonics to represent CPU instructions and produces object code for x86 processors. Syntax Variants Two main syntaxes exist: AT&amp;T (source before destination) and Intel (destination before source). Intel syntax is dominant when disassembling or debugging both Windows PE and Linux ELF binaries. info A PE (Portable Executable) file is a file format used by Windows for executables (.</description>
+    </item>
+    <item>
+      <title>Techniques</title>
+      <link>http://localhost:1313/guides/reverse-engineering/techniques/index.html</link>
       <pubDate>Thu, 28 Aug 2025 11:03:51 -0400</pubDate>
-      <guid>http://localhost:1313/guides/reverse-engineering/into/index.html</guid>
-      <description></description>
+      <guid>http://localhost:1313/guides/reverse-engineering/techniques/index.html</guid>
+      <description>There are two basic techniques that you can employ when analyzing programs. The first being static analysis and the other being dynamic analysis.&#xA;Static analysis : examines a program’s executable without running it, using decompilers and disassemblers to reveal its code structure, control flow, and embedded data. Dynamic analysis : executes the program in a controlled environment, leveraging debuggers and instrumentation tools to observe its runtime behavior, memory usage, and logic paths.</description>
     </item>
   </channel>
 </rss>
