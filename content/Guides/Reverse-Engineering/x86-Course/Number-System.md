@@ -1,7 +1,9 @@
 +++
-title = 'Number System'
+title = '1. Number System'
 date = 2025-08-28T19:27:31-04:00
 draft = true
+
+weight = 10
 +++
 
 + A bit is the fundamental unit in computing, represented by an electrical state: on (1) or off (0).

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.131.0">
+    <meta name="generator" content="Relearn 8.0.0+9803d5122ebb3276acea823f476e9eb44f607862">
+    <meta name="description" content="Instruction Pointer Register (EIP) The Instruction Pointer (EIP on IA-32/x86) is one of the most important registers when working at the assembly / binary level. It holds the address of the next instruction the CPU will execute and therefore directly controls program flow.
+info EIP points to the next instruction. Changing EIP changes what code the CPU executes next — this is why the register is central to control-flow, debugging, and reverse engineering.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="5. Instruction Pointer Register :: Ultimate_x64_Notes">
+    <meta name="twitter:description" content="Instruction Pointer Register (EIP) The Instruction Pointer (EIP on IA-32/x86) is one of the most important registers when working at the assembly / binary level. It holds the address of the next instruction the CPU will execute and therefore directly controls program flow.
+info EIP points to the next instruction. Changing EIP changes what code the CPU executes next — this is why the register is central to control-flow, debugging, and reverse engineering.">
+    <meta property="og:url" content="http://localhost:1313/guides/reverse-engineering/x86-course/instruction-pointer-register/index.html">
+    <meta property="og:site_name" content="Ultimate_x64_Notes">
+    <meta property="og:title" content="5. Instruction Pointer Register :: Ultimate_x64_Notes">
+    <meta property="og:description" content="Instruction Pointer Register (EIP) The Instruction Pointer (EIP on IA-32/x86) is one of the most important registers when working at the assembly / binary level. It holds the address of the next instruction the CPU will execute and therefore directly controls program flow.
+info EIP points to the next instruction. Changing EIP changes what code the CPU executes next — this is why the register is central to control-flow, debugging, and reverse engineering.">
+    <meta property="og:locale" content="en_us">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Guides">
+    <meta property="article:published_time" content="2025-08-29T10:50:59-04:00">
+    <meta property="article:modified_time" content="2025-08-29T10:50:59-04:00">
+    <meta itemprop="name" content="5. Instruction Pointer Register :: Ultimate_x64_Notes">
+    <meta itemprop="description" content="Instruction Pointer Register (EIP) The Instruction Pointer (EIP on IA-32/x86) is one of the most important registers when working at the assembly / binary level. It holds the address of the next instruction the CPU will execute and therefore directly controls program flow.
+info EIP points to the next instruction. Changing EIP changes what code the CPU executes next — this is why the register is central to control-flow, debugging, and reverse engineering.">
+    <meta itemprop="datePublished" content="2025-08-29T10:50:59-04:00">
+    <meta itemprop="dateModified" content="2025-08-29T10:50:59-04:00">
+    <meta itemprop="wordCount" content="623">
+    <title>5. Instruction Pointer Register :: Ultimate_x64_Notes</title>
+    <link href="/css/auto-complete/auto-complete.min.css?1756486655" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1756486655" defer></script>
+    <script src="/js/search-lunr.js?1756486655" defer></script>
+    <script src="/js/search.js?1756486655" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/searchindex.en.js?1756486655";
+    </script>
+    <script src="/js/lunr/lunr.min.js?1756486655" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1756486655" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1756486655" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1756486655" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['en'];
+    </script>
+    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1756486655" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1756486655" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1756486655" rel="stylesheet">
+    <link href="/css/theme.css?1756486655" rel="stylesheet">
+    <link href="/css/format-html.css?1756486655" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = ``;
+      window.relearn.path='\/guides\/reverse-engineering\/x86-course\/instruction-pointer-register\/index.html';
+      window.relearn.relBasePath='..\/..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..\/..';
+      window.relearn.absBaseUri='http:\/\/localhost:1313';
+      window.relearn.disableAnchorCopy=false;
+      window.relearn.disableAnchorScrolling=false;
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // legal
+      window.relearn.getItem = (s,n) => {return s.getItem(n)};
+      window.relearn.setItem = (s,n,v) => {return s.setItem(n,v)};
+      window.relearn.removeItem = (s,n) => {return s.removeItem(n)};
+      // translations
+      window.T_Copy_to_clipboard = `Copy to clipboard`;
+      window.T_Copied_to_clipboard = `Copied to clipboard!`;
+      window.T_Copy_link_to_clipboard = `Copy link to clipboard`;
+      window.T_Link_copied_to_clipboard = `Copied link to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      // variant stuff
+      window.relearn.themevariants = [ 'zen-dark', 'blue' ];
+      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant") ?? "";
+        if( variant == window.relearn.customvariantname ){
+        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+          variant = window.relearn.themevariants[0];
+          window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+  </head>
+  <body class="mobile-support html" data-url="/guides/reverse-engineering/x86-course/instruction-pointer-register/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide"><button class="topbar-control" onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#instruction-pointer-register-eip">Instruction Pointer Register (EIP)</a></li>
+    <li><a href="#extra">EXTRA</a></li>
+    <li><a href="#conceptual-example">Conceptual Example</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">HOME</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/guides/index.html"><span itemprop="name">Guides</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/guides/reverse-engineering/index.html"><span itemprop="name">Reverse Engineering</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/guides/reverse-engineering/x86-course/index.html"><span itemprop="name">0. x86 Course</span></a><meta itemprop="position" content="4">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">5. Instruction Pointer Register</span><meta itemprop="position" content="5"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/guides/reverse-engineering/x86-course/segment-registers/index.html" title="4. Segment Registers (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/guides/reverse-engineering/techniques/index.html" title="Techniques (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable guides" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="5-instruction-pointer-register">5. Instruction Pointer Register</h1>
+
+<h2 id="instruction-pointer-register-eip">Instruction Pointer Register (EIP)</h2>
+<p>The <strong>Instruction Pointer</strong> (EIP on IA-32/x86) is one of the most important registers when working at the assembly / binary level. It holds the address of the <strong>next instruction</strong> the CPU will execute and therefore directly controls program flow.</p>
+
+<details open class=" box cstyle notices info">
+  <summary class="box-label" tabindex="-1">
+    <i class="fa-fw fas fa-info-circle"></i> 
+    info
+  </summary>
+  <div class="box-content">
+<p><strong>EIP points to the next instruction.</strong> Changing EIP changes what code the CPU executes next — this is why the register is central to control-flow, debugging, and reverse engineering.</p>
+  </div>
+</details>
+<h2 id="extra">EXTRA</h2>
+<ul>
+<li><strong>Role:</strong> EIP contains the address of the next instruction to execute. The CPU fetches the instruction at <code>EIP</code>, executes it, then advances EIP to the following instruction (or to a target address when a branch/call/ret occurs).</li>
+<li><strong>Read / Observe:</strong> Debuggers and disassemblers display EIP so analysts can follow program execution and see exactly which instruction is about to run.</li>
+<li><strong>Modify (conceptually):</strong> EIP can be changed by normal control-flow instructions (jumps, calls, returns) or — in debugging contexts — by the user to alter execution order for testing or analysis.</li>
+<li><strong>Why reverse engineers care:</strong> Controlling or observing EIP lets you understand program logic, follow execution paths, and identify how a program reacts to inputs or branches.</li>
+</ul>
+<h2 id="conceptual-example">Conceptual Example</h2>
+<p>As you can see here , the function <code>unreachableFunction</code> are not called in the <code>main</code> function. During runtime, the program will not execute the code inside unreachableFunction. However, we can view it in the assembly and we&rsquo;ll try to redirect the instruction pointer (EIP) to that function using the GDB debugger. You’ll find information about <a href="/cheatsheets/tools/gdb/index.html">GDB</a> in the <a href="/cheatsheets/tools/index.html">Tools section</a>.<br>
+It’s okay if this isn’t entirely clear yet. Throughout the course, we’ll explore many examples that will help us internalize these concepts. Just stay curious.</p>
+
+<details open class=" box cstyle notices red">
+  <summary class="box-label a11y-only" tabindex="-1">
+    <span class="a11y-only">Details</span>
+  </summary>
+  <div class="box-content">
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">unreachableFunction</span>(<span style="color:#66d9ef">void</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">puts</span>(<span style="color:#e6db74">&#34;You reached an unreachable function!&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">puts</span>(<span style="color:#e6db74">&#34;Hello World!&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
+  </div>
+</details>
+
+<details open class=" box cstyle notices default" style=";--VARIABLE-BOX-color: black">
+  <summary class="box-label" tabindex="-1">
+    <i class="fa-solid fa-info-circle"></i> 
+    About binary
+  </summary>
+  <div class="box-content">
+<ul>
+<li><strong>Compiling</strong> (build a 32-bit)</li>
+</ul>
+<p><code>gcc -m32 -o hello hello.c</code></p>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>file hello  
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>hello: ELF 32-bit LSB pie executable, Intel i386, version <span style="color:#ae81ff">1</span> <span style="color:#f92672">(</span>SYSV<span style="color:#f92672">)</span>, dynamically linked, interpreter /lib/ld-linux.so.2, BuildID<span style="color:#f92672">[</span>sha1<span style="color:#f92672">]=</span>e4c4eb152501056b7c1feedda4338dffaa27c027, <span style="color:#66d9ef">for</span> GNU/Linux 3.2.0, with debug_info, not stripped</span></span></code></pre></div>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./hello 
+</span></span><span style="display:flex;"><span>Hello World!
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>gdb hello <span style="color:#75715e">#For Analysing the binary</span></span></span></code></pre></div>
+  </div>
+</details>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> info functions
+</span></span><span style="display:flex;"><span>All defined functions:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Non-debugging symbols:
+</span></span><span style="display:flex;"><span>0x00001000  _init
+</span></span><span style="display:flex;"><span>0x00001030  __libc_start_main@plt
+</span></span><span style="display:flex;"><span>0x00001040  puts@plt
+</span></span><span style="display:flex;"><span>0x00001050  __cxa_finalize@plt
+</span></span><span style="display:flex;"><span>0x00001060  _start
+</span></span><span style="display:flex;"><span>0x00001090  __x86.get_pc_thunk.bx
+</span></span><span style="display:flex;"><span>0x000010a0  deregister_tm_clones
+</span></span><span style="display:flex;"><span>0x000010e0  register_tm_clones
+</span></span><span style="display:flex;"><span>0x00001130  __do_global_dtors_aux
+</span></span><span style="display:flex;"><span>0x00001180  frame_dummy
+</span></span><span style="display:flex;"><span>0x00001189  __x86.get_pc_thunk.dx
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>0x0000118d  unreachableFunction   &lt; THE FUNCTION
+</span></span><span style="display:flex;"><span>0x000011b8  main                  &lt; MAIN
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>0x000011f4  __x86.get_pc_thunk.ax
+</span></span><span style="display:flex;"><span>0x000011f8  _fini</span></span></code></pre></div>
+
+<details open class=" box cstyle notices blue">
+  <summary class="box-label a11y-only" tabindex="-1">
+    <span class="a11y-only">Details</span>
+  </summary>
+  <div class="box-content">
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">(</span><span style="color:#a6e22e">gdb</span>) <span style="color:#66d9ef">b</span> <span style="color:#66d9ef">main</span> <span style="color:#75715e">#breakpoint at main function
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#960050;background-color:#1e0010">(</span><span style="color:#a6e22e">gdb</span>) <span style="color:#66d9ef">r</span> <span style="color:#75715e">#run
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#960050;background-color:#1e0010">(</span><span style="color:#a6e22e">gdb</span>) <span style="color:#66d9ef">set</span> <span style="color:#66d9ef">disassembly-flavor</span> <span style="color:#66d9ef">intel</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">(</span><span style="color:#a6e22e">gdb</span>) <span style="color:#66d9ef">disass</span> <span style="color:#66d9ef">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Dump</span> <span style="color:#66d9ef">of</span> <span style="color:#66d9ef">assembler</span> <span style="color:#66d9ef">code</span> <span style="color:#66d9ef">for</span> <span style="color:#66d9ef">function</span> <span style="color:#66d9ef">main</span>:
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x565561b8</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">0</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:     <span style="color:#66d9ef">lea</span>    <span style="color:#66d9ef">ecx</span>,[<span style="color:#66d9ef">esp</span><span style="color:#960050;background-color:#1e0010">+</span><span style="color:#ae81ff">0x4</span>]
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x565561bc</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">4</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:     <span style="color:#66d9ef">and</span>    <span style="color:#66d9ef">esp</span>,<span style="color:#ae81ff">0xfffffff0</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x565561bf</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">7</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:     <span style="color:#66d9ef">push</span>   <span style="color:#66d9ef">DWORD</span> <span style="color:#66d9ef">PTR</span> [<span style="color:#66d9ef">ecx-0x4</span>]
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x565561c2</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">10</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:    <span style="color:#66d9ef">push</span>   <span style="color:#66d9ef">ebp</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x565561c3</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">11</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:    <span style="color:#66d9ef">mov</span>    <span style="color:#66d9ef">ebp</span>,<span style="color:#66d9ef">esp</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x565561c5</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">13</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:    <span style="color:#66d9ef">push</span>   <span style="color:#66d9ef">ebx</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x565561c6</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">14</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:    <span style="color:#66d9ef">push</span>   <span style="color:#66d9ef">ecx</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">=&gt;</span> <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x565561c7</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">15</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:    <span style="color:#66d9ef">call</span>   <span style="color:#ae81ff">0x565561f4</span> &lt;<span style="color:#66d9ef">__x86.get_pc_thunk.ax</span>&gt; <span style="color:#75715e">#[EIP now is HERE]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>   <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x565561cc</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">20</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:    <span style="color:#66d9ef">add</span>    <span style="color:#66d9ef">eax</span>,<span style="color:#ae81ff">0x2e28</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x565561d1</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">25</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:    <span style="color:#66d9ef">sub</span>    <span style="color:#66d9ef">esp</span>,<span style="color:#ae81ff">0xc</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x565561d4</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">28</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:    <span style="color:#66d9ef">lea</span>    <span style="color:#66d9ef">edx</span>,[<span style="color:#66d9ef">eax-0x1fc7</span>]      <span style="color:#75715e"># Prepare argument for puts
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>   <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x565561da</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">34</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:    <span style="color:#66d9ef">push</span>   <span style="color:#66d9ef">edx</span>                   <span style="color:#75715e"># Push argument for puts
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>   <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x565561db</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">35</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:    <span style="color:#66d9ef">mov</span>    <span style="color:#66d9ef">ebx</span>,<span style="color:#66d9ef">eax</span>               <span style="color:#75715e"># Save relocation base in ebx
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>   <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x565561dd</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">37</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:    <span style="color:#66d9ef">call</span>   <span style="color:#ae81ff">0x56556040</span> &lt;<span style="color:#66d9ef">puts@plt</span>&gt; <span style="color:#75715e"># Call puts(&#34;Hello World!&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>   <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x565561e2</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">42</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:    <span style="color:#66d9ef">add</span>    <span style="color:#66d9ef">esp</span>,<span style="color:#ae81ff">0x10</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x565561e5</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">45</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:    <span style="color:#66d9ef">mov</span>    <span style="color:#66d9ef">eax</span>,<span style="color:#ae81ff">0x0</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x565561ea</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">50</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:    <span style="color:#66d9ef">lea</span>    <span style="color:#66d9ef">esp</span>,[<span style="color:#66d9ef">ebp-0x8</span>]
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x565561ed</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">53</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:    <span style="color:#66d9ef">pop</span>    <span style="color:#66d9ef">ecx</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x565561ee</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">54</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:    <span style="color:#66d9ef">pop</span>    <span style="color:#66d9ef">ebx</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x565561ef</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">55</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:    <span style="color:#66d9ef">pop</span>    <span style="color:#66d9ef">ebp</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x565561f0</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">56</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:    <span style="color:#66d9ef">lea</span>    <span style="color:#66d9ef">esp</span>,[<span style="color:#66d9ef">ecx-0x4</span>]
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x565561f3</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">59</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:    <span style="color:#66d9ef">ret</span></span></span></code></pre></div>
+<div class="highlight wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">(</span><span style="color:#a6e22e">gdb</span>) <span style="color:#66d9ef">disass</span> <span style="color:#66d9ef">unreachableFunction</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Dump</span> <span style="color:#66d9ef">of</span> <span style="color:#66d9ef">assembler</span> <span style="color:#66d9ef">code</span> <span style="color:#66d9ef">for</span> <span style="color:#66d9ef">function</span> <span style="color:#66d9ef">unreachableFunction</span>:
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x0000118d</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">0</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:     <span style="color:#66d9ef">push</span>   <span style="color:#66d9ef">ebp</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x0000118e</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:     <span style="color:#66d9ef">mov</span>    <span style="color:#66d9ef">ebp</span>,<span style="color:#66d9ef">esp</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x00001190</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">3</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:     <span style="color:#66d9ef">push</span>   <span style="color:#66d9ef">ebx</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x00001191</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">4</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:     <span style="color:#66d9ef">sub</span>    <span style="color:#66d9ef">esp</span>,<span style="color:#ae81ff">0x4</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x00001194</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">7</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:     <span style="color:#66d9ef">call</span>   <span style="color:#ae81ff">0x11f4</span> &lt;<span style="color:#66d9ef">__x86.get_pc_thunk.ax</span>&gt;
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x00001199</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">12</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:    <span style="color:#66d9ef">add</span>    <span style="color:#66d9ef">eax</span>,<span style="color:#ae81ff">0x2e5b</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x0000119e</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">17</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:    <span style="color:#66d9ef">sub</span>    <span style="color:#66d9ef">esp</span>,<span style="color:#ae81ff">0xc</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x000011a1</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">20</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:    <span style="color:#66d9ef">lea</span>    <span style="color:#66d9ef">edx</span>,[<span style="color:#66d9ef">eax-0x1fec</span>]      <span style="color:#75715e"># Prepare argument for puts
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>   <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x000011a7</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">26</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:    <span style="color:#66d9ef">push</span>   <span style="color:#66d9ef">edx</span>                   <span style="color:#75715e"># Push argument for puts
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>   <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x000011a8</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">27</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:    <span style="color:#66d9ef">mov</span>    <span style="color:#66d9ef">ebx</span>,<span style="color:#66d9ef">eax</span>               <span style="color:#75715e"># Save relocation base in ebx
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>   <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x000011aa</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">29</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:    <span style="color:#66d9ef">call</span>   <span style="color:#ae81ff">0x1040</span> &lt;<span style="color:#66d9ef">puts@plt</span>&gt;     <span style="color:#75715e"># Call puts(&#34;You reached an unreachable function!&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>   <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x000011af</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">34</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:    <span style="color:#66d9ef">add</span>    <span style="color:#66d9ef">esp</span>,<span style="color:#ae81ff">0x10</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x000011b2</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">37</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:    <span style="color:#66d9ef">nop</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x000011b3</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">38</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:    <span style="color:#66d9ef">mov</span>    <span style="color:#66d9ef">ebx</span>,<span style="color:#66d9ef">DWORD</span> <span style="color:#66d9ef">PTR</span> [<span style="color:#66d9ef">ebp-0x4</span>]
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x000011b6</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">41</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:    <span style="color:#66d9ef">leave</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">0</span><span style="color:#a6e22e">x000011b7</span> <span style="color:#960050;background-color:#1e0010">&lt;+</span><span style="color:#ae81ff">42</span><span style="color:#960050;background-color:#1e0010">&gt;</span>:    <span style="color:#66d9ef">ret</span></span></span></code></pre></div>
+  </div>
+</details>
+
+  <footer class="footline">
+              <i class='fa-fw fas fa-calendar'></i> Aug 29, 2025
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+<a id="R-logo" href="/index.html" style="display: flex; align-items: center; text-decoration: none;">
+  <img src="/images/ghidra.ico" alt="brand logo" style="height: 2em; margin-right: 0.5em;">
+  Ultimate_x64_Notes
+</a>
+        </div>
+        <search><form action="/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/index.html"><a class="padding" href="/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="parent " data-nav-id="/guides/index.html"><input type="checkbox" id="R-section-8fc2fd7736125e87cab8840a86c2af5a" aria-controls="R-subsections-8fc2fd7736125e87cab8840a86c2af5a" checked><label for="R-section-8fc2fd7736125e87cab8840a86c2af5a"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Guides</span></label><a class="padding" href="/guides/index.html"><i class="fa-solid fa-book"></i> Guides<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-8fc2fd7736125e87cab8840a86c2af5a" class="collapsible-menu">
+            <li class="" data-nav-id="/guides/cryptography/index.html"><input type="checkbox" id="R-section-72d187d8fca36be3f714de363304e311" aria-controls="R-subsections-72d187d8fca36be3f714de363304e311"><label for="R-section-72d187d8fca36be3f714de363304e311"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Cryptography</span></label><a class="padding" href="/guides/cryptography/index.html"><i class="fas fa-lock"></i> Cryptography<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-72d187d8fca36be3f714de363304e311" class="collapsible-menu">
+            <li class="" data-nav-id="/guides/cryptography/into/index.html"><a class="padding" href="/guides/cryptography/into/index.html"><i class="fa-solid fa-book-open"></i> Intro<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="" data-nav-id="/guides/forensics/index.html"><input type="checkbox" id="R-section-3ff6105cb3128fa0b6c0d258baad817a" aria-controls="R-subsections-3ff6105cb3128fa0b6c0d258baad817a"><label for="R-section-3ff6105cb3128fa0b6c0d258baad817a"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Forensics</span></label><a class="padding" href="/guides/forensics/index.html"><i class="fas fa-search"></i> Forensics<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-3ff6105cb3128fa0b6c0d258baad817a" class="collapsible-menu">
+            <li class="" data-nav-id="/guides/forensics/into/index.html"><a class="padding" href="/guides/forensics/into/index.html"><i class="fa-solid fa-book-open"></i> Intro<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="parent " data-nav-id="/guides/reverse-engineering/index.html"><input type="checkbox" id="R-section-3d65eeeb594a4791e0e8c82bf8a30a44" aria-controls="R-subsections-3d65eeeb594a4791e0e8c82bf8a30a44" checked><label for="R-section-3d65eeeb594a4791e0e8c82bf8a30a44"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Reverse Engineering</span></label><a class="padding" href="/guides/reverse-engineering/index.html"><i class="fas fa-undo-alt"></i> Reverse Engineering<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-3d65eeeb594a4791e0e8c82bf8a30a44" class="collapsible-menu">
+            <li class="parent " data-nav-id="/guides/reverse-engineering/x86-course/index.html"><input type="checkbox" id="R-section-e36150a455e94c876ad23552dd503163" aria-controls="R-subsections-e36150a455e94c876ad23552dd503163" checked><label for="R-section-e36150a455e94c876ad23552dd503163"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu 0. x86 Course</span></label><a class="padding" href="/guides/reverse-engineering/x86-course/index.html"><i class="fa-solid fa-microchip"></i> 0. x86 Course<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-e36150a455e94c876ad23552dd503163" class="collapsible-menu">
+            <li class="" data-nav-id="/guides/reverse-engineering/x86-course/number-system/index.html"><a class="padding" href="/guides/reverse-engineering/x86-course/number-system/index.html">1. Number System<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-id="/guides/reverse-engineering/x86-course/arch/index.html"><a class="padding" href="/guides/reverse-engineering/x86-course/arch/index.html">2. Architecture<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-id="/guides/reverse-engineering/x86-course/general-purpose-registers/index.html"><a class="padding" href="/guides/reverse-engineering/x86-course/general-purpose-registers/index.html">3. General Purpose Registers<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-id="/guides/reverse-engineering/x86-course/segment-registers/index.html"><a class="padding" href="/guides/reverse-engineering/x86-course/segment-registers/index.html">4. Segment Registers<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="active " data-nav-id="/guides/reverse-engineering/x86-course/instruction-pointer-register/index.html"><a class="padding" href="/guides/reverse-engineering/x86-course/instruction-pointer-register/index.html">5. Instruction Pointer Register<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="" data-nav-id="/guides/reverse-engineering/techniques/index.html"><a class="padding" href="/guides/reverse-engineering/techniques/index.html"><i class="fa-solid fa-book-open"></i> Techniques<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="" data-nav-id="/guides/binary-exploitation/index.html"><input type="checkbox" id="R-section-0f3eb83accdb3b44687b86a6b3dd6122" aria-controls="R-subsections-0f3eb83accdb3b44687b86a6b3dd6122"><label for="R-section-0f3eb83accdb3b44687b86a6b3dd6122"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Binary Exploitation</span></label><a class="padding" href="/guides/binary-exploitation/index.html"><i class="fas fa-bug"></i> Binary Exploitation<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-0f3eb83accdb3b44687b86a6b3dd6122" class="collapsible-menu">
+            <li class="" data-nav-id="/guides/binary-exploitation/intro/index.html"><a class="padding" href="/guides/binary-exploitation/intro/index.html"><i class="fa-solid fa-book-open"></i> Intro<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li></ul></li>
+            <li class="" data-nav-id="/troubleshooting/index.html"><input type="checkbox" id="R-section-9008353a49f797e5aee6cfd446175ed6" aria-controls="R-subsections-9008353a49f797e5aee6cfd446175ed6"><label for="R-section-9008353a49f797e5aee6cfd446175ed6"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Troubleshooting</span></label><a class="padding" href="/troubleshooting/index.html"><i class="fas fa-exclamation-triangle"></i> Troubleshooting<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-9008353a49f797e5aee6cfd446175ed6" class="collapsible-menu">
+            <li class="" data-nav-id="/troubleshooting/kali-issues/index.html"><a class="padding" href="/troubleshooting/kali-issues/index.html"><i class="fa-solid fa-check"></i> Kali Issues<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="" data-nav-id="/services-protocols/index.html"><input type="checkbox" id="R-section-8bf863733bf1297ed9bfdecb49a849cd" aria-controls="R-subsections-8bf863733bf1297ed9bfdecb49a849cd"><label for="R-section-8bf863733bf1297ed9bfdecb49a849cd"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Services &amp; Protocols</span></label><a class="padding" href="/services-protocols/index.html"><i class="fas fa-cogs"></i> Services &amp; Protocols<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-8bf863733bf1297ed9bfdecb49a849cd" class="collapsible-menu">
+            <li class="" data-nav-id="/services-protocols/ssh/index.html"><a class="padding" href="/services-protocols/ssh/index.html"><i class="fas fa-gear"></i> SSH<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-id="/services-protocols/http/index.html"><a class="padding" href="/services-protocols/http/index.html"><i class="fas fa-gear"></i> HTTP<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-id="/services-protocols/ftp/index.html"><a class="padding" href="/services-protocols/ftp/index.html"><i class="fas fa-gear"></i> FTP<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-id="/services-protocols/dns/index.html"><a class="padding" href="/services-protocols/dns/index.html"><i class="fas fa-gear"></i> DNS<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="" data-nav-id="/cheatsheets/index.html"><input type="checkbox" id="R-section-3735e222bf0c0345f8490886e0cb5a95" aria-controls="R-subsections-3735e222bf0c0345f8490886e0cb5a95"><label for="R-section-3735e222bf0c0345f8490886e0cb5a95"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Cheatsheets</span></label><a class="padding" href="/cheatsheets/index.html"><i class="fa-solid fa-keyboard"></i> Cheatsheets<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-3735e222bf0c0345f8490886e0cb5a95" class="collapsible-menu">
+            <li class="" data-nav-id="/cheatsheets/windows/index.html"><input type="checkbox" id="R-section-e11d8de730fc0e838a6428ae89ea90fd" aria-controls="R-subsections-e11d8de730fc0e838a6428ae89ea90fd"><label for="R-section-e11d8de730fc0e838a6428ae89ea90fd"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Windows</span></label><a class="padding" href="/cheatsheets/windows/index.html"><i class="fab fa-windows"></i> Windows<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-e11d8de730fc0e838a6428ae89ea90fd" class="collapsible-menu">
+            <li class="" data-nav-id="/cheatsheets/windows/runas/index.html"><a class="padding" href="/cheatsheets/windows/runas/index.html"><i class="fas fa-terminal"></i> runas<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="" data-nav-id="/cheatsheets/linux/index.html"><input type="checkbox" id="R-section-3b4fb2b1be094b6ea6b3bd40c789eb3d" aria-controls="R-subsections-3b4fb2b1be094b6ea6b3bd40c789eb3d"><label for="R-section-3b4fb2b1be094b6ea6b3bd40c789eb3d"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Linux</span></label><a class="padding" href="/cheatsheets/linux/index.html"><i class="fab fa-linux"></i> Linux<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-3b4fb2b1be094b6ea6b3bd40c789eb3d" class="collapsible-menu">
+            <li class="" data-nav-id="/cheatsheets/linux/apt/index.html"><a class="padding" href="/cheatsheets/linux/apt/index.html"><i class="fas fa-terminal"></i> apt<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="" data-nav-id="/cheatsheets/programming/index.html"><input type="checkbox" id="R-section-264d2d0f2489dfb9da431217ce75d49f" aria-controls="R-subsections-264d2d0f2489dfb9da431217ce75d49f"><label for="R-section-264d2d0f2489dfb9da431217ce75d49f"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Programming</span></label><a class="padding" href="/cheatsheets/programming/index.html"><i class="fa-solid fa-code"></i> Programming<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-264d2d0f2489dfb9da431217ce75d49f" class="collapsible-menu">
+            <li class="" data-nav-id="/cheatsheets/programming/mysql/index.html"><a class="padding" href="/cheatsheets/programming/mysql/index.html"><i class="fa-solid fa-layer-group"></i> MySQL<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-id="/cheatsheets/programming/markdown/index.html"><a class="padding" href="/cheatsheets/programming/markdown/index.html"><i class="fa-solid fa-layer-group"></i> Markdown<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-id="/cheatsheets/programming/bash/index.html"><a class="padding" href="/cheatsheets/programming/bash/index.html"><i class="fa-solid fa-layer-group"></i> Bash<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-id="/cheatsheets/programming/python/index.html"><a class="padding" href="/cheatsheets/programming/python/index.html"><i class="fa-solid fa-layer-group"></i> Python<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-id="/cheatsheets/programming/c&#43;&#43;/index.html"><a class="padding" href="/cheatsheets/programming/c&#43;&#43;/index.html"><i class="fa-solid fa-layer-group"></i> C&#43;&#43;<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="" data-nav-id="/cheatsheets/tools/index.html"><input type="checkbox" id="R-section-1ed1948031a31f7834f447bf1283aec7" aria-controls="R-subsections-1ed1948031a31f7834f447bf1283aec7"><label for="R-section-1ed1948031a31f7834f447bf1283aec7"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Tools</span></label><a class="padding" href="/cheatsheets/tools/index.html"><i class="fa-solid fa-screwdriver-wrench"></i> Tools<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-1ed1948031a31f7834f447bf1283aec7" class="collapsible-menu">
+            <li class="" data-nav-id="/cheatsheets/tools/gdb/index.html"><a class="padding" href="/cheatsheets/tools/gdb/index.html"><i class="fa-solid fa-wrench"></i> Gdb<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-id="/cheatsheets/tools/binwalk/index.html"><a class="padding" href="/cheatsheets/tools/binwalk/index.html"><i class="fa-solid fa-wrench"></i> Binwalk<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-id="/cheatsheets/tools/steghide/index.html"><a class="padding" href="/cheatsheets/tools/steghide/index.html"><i class="fa-solid fa-wrench"></i> Steghide<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li></ul></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts">
+          <div class="nav-title padding">More</div>
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/more/credits_index/"><a class="padding" href="/more/credits_index/"><i class="fa-solid fa-info"></i> About<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-id="/more/credits_index/"><a class="padding" href="/more/credits_index/"><i class="fa-solid fa-bullhorn"></i> Credits<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-id="https://github.com/hassanbencheikh"><a class="padding" href="https://github.com/hassanbencheikh" rel="external" target="_blank"><i class="fa-brands fa-github fa-fw"></i> GitHub<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-id="https://www.linkedin.com/in/bencheikh-hassan/"><a class="padding" href="https://www.linkedin.com/in/bencheikh-hassan/" rel="external" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn<i class="fa-fw fas fa-check read-icon"></i></a></li>
+          </ul>
+        </div>
+        <div id="R-footer-margin"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols">
+          <ul class="">
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Theme</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-zen-dark" value="zen-dark" selected>Zen Dark</option>
+                    <option id="R-select-variant-blue" value="blue">Blue</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+            <li class="R-historyclearer">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-history"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <button>Clear History</button>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="/js/clipboard/clipboard.min.js?1756486655" defer></script>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1756486655" defer></script>
+    <script src="/js/theme.js?1756486655" defer></script>
+  </body>
+</html>

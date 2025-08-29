@@ -1,7 +1,9 @@
 +++
-title = 'Architecture'
+title = '2. Architecture'
 date = 2025-08-28T20:32:23-04:00
 draft = true
+
+weight = 20
 +++
 
 A computer application is a sequence of machine instructions stored in memory. The binary numbers that make up the program are meaningful only in how the CPU interprets and executes them.

@@ -5,49 +5,61 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.131.0">
     <meta name="generator" content="Relearn 8.0.0+9803d5122ebb3276acea823f476e9eb44f607862">
-    <meta name="description" content="">
+    <meta name="description" content="Modern processors rely on registers to temporarily store data while executing instructions. Registers are small, high-speed storage locations directly inside the CPU, much faster than accessing RAM.
+In the IA-32 (x86, 32-bit) architecture, there are 8 general-purpose registers (GPRs). Although each can technically hold any type of data, many have conventional roles in programming and assembly.
+note A key feature of x86 is backward compatibility: even code written for 8-bit processors decades ago can still run on modern 64-bit CPUs.">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="DNS :: Ultimate_x64_Notes">
-    <meta property="og:url" content="http://localhost:1313/services-protocols/dns/index.html">
+    <meta name="twitter:title" content="3. General Purpose Registers :: Ultimate_x64_Notes">
+    <meta name="twitter:description" content="Modern processors rely on registers to temporarily store data while executing instructions. Registers are small, high-speed storage locations directly inside the CPU, much faster than accessing RAM.
+In the IA-32 (x86, 32-bit) architecture, there are 8 general-purpose registers (GPRs). Although each can technically hold any type of data, many have conventional roles in programming and assembly.
+note A key feature of x86 is backward compatibility: even code written for 8-bit processors decades ago can still run on modern 64-bit CPUs.">
+    <meta property="og:url" content="http://localhost:1313/guides/reverse-engineering/x86-course/general-purpose-registers/index.html">
     <meta property="og:site_name" content="Ultimate_x64_Notes">
-    <meta property="og:title" content="DNS :: Ultimate_x64_Notes">
+    <meta property="og:title" content="3. General Purpose Registers :: Ultimate_x64_Notes">
+    <meta property="og:description" content="Modern processors rely on registers to temporarily store data while executing instructions. Registers are small, high-speed storage locations directly inside the CPU, much faster than accessing RAM.
+In the IA-32 (x86, 32-bit) architecture, there are 8 general-purpose registers (GPRs). Although each can technically hold any type of data, many have conventional roles in programming and assembly.
+note A key feature of x86 is backward compatibility: even code written for 8-bit processors decades ago can still run on modern 64-bit CPUs.">
     <meta property="og:locale" content="en_us">
     <meta property="og:type" content="article">
-    <meta property="article:section" content="Services &amp; Protocols">
-    <meta property="article:published_time" content="2025-08-28T07:02:49-04:00">
-    <meta property="article:modified_time" content="2025-08-28T07:02:49-04:00">
-    <meta itemprop="name" content="DNS :: Ultimate_x64_Notes">
-    <meta itemprop="datePublished" content="2025-08-28T07:02:49-04:00">
-    <meta itemprop="dateModified" content="2025-08-28T07:02:49-04:00">
-    <title>DNS :: Ultimate_x64_Notes</title>
-    <link href="/css/auto-complete/auto-complete.min.css?1756481385" rel="stylesheet">
-    <script src="/js/auto-complete/auto-complete.min.js?1756481385" defer></script>
-    <script src="/js/search-lunr.js?1756481385" defer></script>
-    <script src="/js/search.js?1756481385" defer></script>
+    <meta property="article:section" content="Guides">
+    <meta property="article:published_time" content="2025-08-29T06:46:26-04:00">
+    <meta property="article:modified_time" content="2025-08-29T06:46:26-04:00">
+    <meta itemprop="name" content="3. General Purpose Registers :: Ultimate_x64_Notes">
+    <meta itemprop="description" content="Modern processors rely on registers to temporarily store data while executing instructions. Registers are small, high-speed storage locations directly inside the CPU, much faster than accessing RAM.
+In the IA-32 (x86, 32-bit) architecture, there are 8 general-purpose registers (GPRs). Although each can technically hold any type of data, many have conventional roles in programming and assembly.
+note A key feature of x86 is backward compatibility: even code written for 8-bit processors decades ago can still run on modern 64-bit CPUs.">
+    <meta itemprop="datePublished" content="2025-08-29T06:46:26-04:00">
+    <meta itemprop="dateModified" content="2025-08-29T06:46:26-04:00">
+    <meta itemprop="wordCount" content="278">
+    <title>3. General Purpose Registers :: Ultimate_x64_Notes</title>
+    <link href="/css/auto-complete/auto-complete.min.css?1756486655" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1756486655" defer></script>
+    <script src="/js/search-lunr.js?1756486655" defer></script>
+    <script src="/js/search.js?1756486655" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/searchindex.en.js?1756481385";
+      window.relearn.index_js_url="/searchindex.en.js?1756486655";
     </script>
-    <script src="/js/lunr/lunr.min.js?1756481385" defer></script>
-    <script src="/js/lunr/lunr.stemmer.support.min.js?1756481385" defer></script>
-    <script src="/js/lunr/lunr.multi.min.js?1756481385" defer></script>
-    <script src="/js/lunr/lunr.en.min.js?1756481385" defer></script>
+    <script src="/js/lunr/lunr.min.js?1756486655" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1756486655" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1756486655" defer></script>
+    <script src="/js/lunr/lunr.en.min.js?1756486655" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['en'];
     </script>
-    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1756481385" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1756481385" rel="stylesheet"></noscript>
-    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1756481385" rel="stylesheet">
-    <link href="/css/theme.css?1756481385" rel="stylesheet">
-    <link href="/css/format-html.css?1756481385" rel="stylesheet" id="R-format-style">
+    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1756486655" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1756486655" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1756486655" rel="stylesheet">
+    <link href="/css/theme.css?1756486655" rel="stylesheet">
+    <link href="/css/format-html.css?1756486655" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
       window.relearn.min = ``;
-      window.relearn.path='\/services-protocols\/dns\/index.html';
-      window.relearn.relBasePath='..\/..';
-      window.relearn.relBaseUri='..\/..';
+      window.relearn.path='\/guides\/reverse-engineering\/x86-course\/general-purpose-registers\/index.html';
+      window.relearn.relBasePath='..\/..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..\/..';
       window.relearn.absBaseUri='http:\/\/localhost:1313';
       window.relearn.disableAnchorCopy=false;
       window.relearn.disableAnchorScrolling=false;
@@ -95,7 +107,7 @@
       window.relearn.markVariant();
     </script>
   </head>
-  <body class="mobile-support html" data-url="/services-protocols/dns/index.html">
+  <body class="mobile-support html" data-url="/guides/reverse-engineering/x86-course/general-purpose-registers/index.html">
     <div id="R-body" class="default-animation">
       <div id="R-body-overlay"></div>
       <nav id="R-topbar">
@@ -106,17 +118,23 @@
             </div>
             <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
               <div class="topbar-content">
-                <div class="topbar-content-wrapper"> 
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#the-8-general-purpose-registers">The 8 General-Purpose Registers</a></li>
+    <li><a href="#register-sizes-and-naming">Register Sizes and Naming</a></li>
+  </ul>
+</nav>
                 </div>
               </div>
             </div>
           </div>
-          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">HOME</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/services-protocols/index.html"><span itemprop="name">Services &amp; Protocols</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">DNS</span><meta itemprop="position" content="3"></li>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">HOME</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/guides/index.html"><span itemprop="name">Guides</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/guides/reverse-engineering/index.html"><span itemprop="name">Reverse Engineering</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/guides/reverse-engineering/x86-course/index.html"><span itemprop="name">0. x86 Course</span></a><meta itemprop="position" content="4">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">3. General Purpose Registers</span><meta itemprop="position" content="5"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
-            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/services-protocols/ftp/index.html" title="FTP (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/guides/reverse-engineering/x86-course/arch/index.html" title="2. Architecture (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
             </div>
-            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/cheatsheets/index.html" title="Cheatsheets (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/guides/reverse-engineering/x86-course/segment-registers/index.html" title="4. Segment Registers (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
             </div>
             <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
               <div class="topbar-content">
@@ -130,17 +148,88 @@
         </div>
       </nav>
       <div id="R-main-overlay"></div>
-      <main id="R-body-inner" class="highlightable services-protocols" tabindex="-1">
+      <main id="R-body-inner" class="highlightable guides" tabindex="-1">
         <div class="flex-block-wrapper">
 <article class="default">
   <header class="headline">
   </header>
 
-<h1 id="dns">DNS</h1>
+<h1 id="3-general-purpose-registers">3. General Purpose Registers</h1>
 
+<p>Modern processors rely on <strong>registers</strong> to temporarily store data while executing instructions. Registers are small, high-speed storage locations directly inside the CPU, much faster than accessing RAM.</p>
+<p>In the <strong>IA-32 (x86, 32-bit) architecture</strong>, there are 8 general-purpose registers (GPRs). Although each can technically hold any type of data, many have <strong>conventional roles</strong> in programming and assembly.</p>
+
+<details open class=" box cstyle notices tip">
+  <summary class="box-label" tabindex="-1">
+    <i class="fa-fw fas fa-lightbulb"></i> 
+    note
+  </summary>
+  <div class="box-content">
+<p>A key feature of x86 is <strong>backward compatibility</strong>: even code written for 8-bit processors decades ago can still run on modern 64-bit CPUs.</p>
+  </div>
+</details>
+<h2 id="the-8-general-purpose-registers">The 8 General-Purpose Registers</h2>
+<table>
+<thead>
+<tr>
+<th>Register</th>
+<th>Role / Typical Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>EAX</strong></td>
+<td><strong>Accumulator</strong> – main register for arithmetic operations. Holds results of calculations and function return values.</td>
+</tr>
+<tr>
+<td><strong>EBX</strong></td>
+<td><strong>Base register</strong> – points to data in the <strong>DS segment</strong>. Often used to store the base address of data.</td>
+</tr>
+<tr>
+<td><strong>ECX</strong></td>
+<td><strong>Counter</strong> – used in loops and string operations (tracks repetition counts).</td>
+</tr>
+<tr>
+<td><strong>EDX</strong></td>
+<td>General-purpose, also used in <strong>I/O operations</strong>. Extends EAX for 64-bit multiplication/division.</td>
+</tr>
+<tr>
+<td><strong>ESI</strong></td>
+<td><strong>Source Index</strong> – points to source data in memory (string/array operations).</td>
+</tr>
+<tr>
+<td><strong>EDI</strong></td>
+<td><strong>Destination Index</strong> – points to destination memory address (string/array operations).</td>
+</tr>
+<tr>
+<td><strong>EBP</strong></td>
+<td><strong>Base Pointer</strong> – points to the <strong>bottom of the stack frame</strong>. Used for referencing function parameters &amp; local variables.</td>
+</tr>
+<tr>
+<td><strong>ESP</strong></td>
+<td><strong>Stack Pointer</strong> – points to the <strong>top of the stack frame</strong>. Used for stack management and local variable access.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="register-sizes-and-naming">Register Sizes and Naming</h2>
+<ul>
+<li>All 8 registers are <strong>32-bit wide</strong> (4 bytes).</li>
+<li>Some registers can also be accessed in <strong>smaller parts</strong>:</li>
+</ul>
+<figure><img src="/images/x86reg.png"
+    alt="System Diagram" width="500px">
+</figure>
+
+<ul>
+<li><strong>EAX → AX → AH / AL</strong></li>
+<li><strong>EBX → BX → BH / BL</strong></li>
+<li><strong>ECX → CX → CH / CL</strong></li>
+<li><strong>EDX → DX → DH / DL</strong></li>
+<li>Other registers (ESI, EDI, EBP, ESP) can also be referenced in <strong>16-bit form</strong>: SI, DI, BP, SP.</li>
+</ul>
 
   <footer class="footline">
-              <i class='fa-fw fas fa-calendar'></i> Aug 28, 2025
+              <i class='fa-fw fas fa-calendar'></i> Aug 29, 2025
   </footer>
 </article>
         </div>
@@ -187,16 +276,16 @@
       <div id="R-content-wrapper" class="highlightable">
         <div class="R-sidebarmenu R-shortcutmenu-main">
           <ul class="enlarge morespace collapsible-menu">
-            <li class="" data-nav-id="/guides/index.html"><input type="checkbox" id="R-section-8fc2fd7736125e87cab8840a86c2af5a" aria-controls="R-subsections-8fc2fd7736125e87cab8840a86c2af5a"><label for="R-section-8fc2fd7736125e87cab8840a86c2af5a"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Guides</span></label><a class="padding" href="/guides/index.html"><i class="fa-solid fa-book"></i> Guides<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-8fc2fd7736125e87cab8840a86c2af5a" class="collapsible-menu">
+            <li class="parent " data-nav-id="/guides/index.html"><input type="checkbox" id="R-section-8fc2fd7736125e87cab8840a86c2af5a" aria-controls="R-subsections-8fc2fd7736125e87cab8840a86c2af5a" checked><label for="R-section-8fc2fd7736125e87cab8840a86c2af5a"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Guides</span></label><a class="padding" href="/guides/index.html"><i class="fa-solid fa-book"></i> Guides<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-8fc2fd7736125e87cab8840a86c2af5a" class="collapsible-menu">
             <li class="" data-nav-id="/guides/cryptography/index.html"><input type="checkbox" id="R-section-72d187d8fca36be3f714de363304e311" aria-controls="R-subsections-72d187d8fca36be3f714de363304e311"><label for="R-section-72d187d8fca36be3f714de363304e311"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Cryptography</span></label><a class="padding" href="/guides/cryptography/index.html"><i class="fas fa-lock"></i> Cryptography<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-72d187d8fca36be3f714de363304e311" class="collapsible-menu">
             <li class="" data-nav-id="/guides/cryptography/into/index.html"><a class="padding" href="/guides/cryptography/into/index.html"><i class="fa-solid fa-book-open"></i> Intro<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
             <li class="" data-nav-id="/guides/forensics/index.html"><input type="checkbox" id="R-section-3ff6105cb3128fa0b6c0d258baad817a" aria-controls="R-subsections-3ff6105cb3128fa0b6c0d258baad817a"><label for="R-section-3ff6105cb3128fa0b6c0d258baad817a"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Forensics</span></label><a class="padding" href="/guides/forensics/index.html"><i class="fas fa-search"></i> Forensics<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-3ff6105cb3128fa0b6c0d258baad817a" class="collapsible-menu">
             <li class="" data-nav-id="/guides/forensics/into/index.html"><a class="padding" href="/guides/forensics/into/index.html"><i class="fa-solid fa-book-open"></i> Intro<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
-            <li class="" data-nav-id="/guides/reverse-engineering/index.html"><input type="checkbox" id="R-section-3d65eeeb594a4791e0e8c82bf8a30a44" aria-controls="R-subsections-3d65eeeb594a4791e0e8c82bf8a30a44"><label for="R-section-3d65eeeb594a4791e0e8c82bf8a30a44"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Reverse Engineering</span></label><a class="padding" href="/guides/reverse-engineering/index.html"><i class="fas fa-undo-alt"></i> Reverse Engineering<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-3d65eeeb594a4791e0e8c82bf8a30a44" class="collapsible-menu">
-            <li class="" data-nav-id="/guides/reverse-engineering/x86-course/index.html"><input type="checkbox" id="R-section-e36150a455e94c876ad23552dd503163" aria-controls="R-subsections-e36150a455e94c876ad23552dd503163"><label for="R-section-e36150a455e94c876ad23552dd503163"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu 0. x86 Course</span></label><a class="padding" href="/guides/reverse-engineering/x86-course/index.html"><i class="fa-solid fa-microchip"></i> 0. x86 Course<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-e36150a455e94c876ad23552dd503163" class="collapsible-menu">
+            <li class="parent " data-nav-id="/guides/reverse-engineering/index.html"><input type="checkbox" id="R-section-3d65eeeb594a4791e0e8c82bf8a30a44" aria-controls="R-subsections-3d65eeeb594a4791e0e8c82bf8a30a44" checked><label for="R-section-3d65eeeb594a4791e0e8c82bf8a30a44"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Reverse Engineering</span></label><a class="padding" href="/guides/reverse-engineering/index.html"><i class="fas fa-undo-alt"></i> Reverse Engineering<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-3d65eeeb594a4791e0e8c82bf8a30a44" class="collapsible-menu">
+            <li class="parent " data-nav-id="/guides/reverse-engineering/x86-course/index.html"><input type="checkbox" id="R-section-e36150a455e94c876ad23552dd503163" aria-controls="R-subsections-e36150a455e94c876ad23552dd503163" checked><label for="R-section-e36150a455e94c876ad23552dd503163"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu 0. x86 Course</span></label><a class="padding" href="/guides/reverse-engineering/x86-course/index.html"><i class="fa-solid fa-microchip"></i> 0. x86 Course<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-e36150a455e94c876ad23552dd503163" class="collapsible-menu">
             <li class="" data-nav-id="/guides/reverse-engineering/x86-course/number-system/index.html"><a class="padding" href="/guides/reverse-engineering/x86-course/number-system/index.html">1. Number System<i class="fa-fw fas fa-check read-icon"></i></a></li>
             <li class="" data-nav-id="/guides/reverse-engineering/x86-course/arch/index.html"><a class="padding" href="/guides/reverse-engineering/x86-course/arch/index.html">2. Architecture<i class="fa-fw fas fa-check read-icon"></i></a></li>
-            <li class="" data-nav-id="/guides/reverse-engineering/x86-course/general-purpose-registers/index.html"><a class="padding" href="/guides/reverse-engineering/x86-course/general-purpose-registers/index.html">3. General Purpose Registers<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="active " data-nav-id="/guides/reverse-engineering/x86-course/general-purpose-registers/index.html"><a class="padding" href="/guides/reverse-engineering/x86-course/general-purpose-registers/index.html">3. General Purpose Registers<i class="fa-fw fas fa-check read-icon"></i></a></li>
             <li class="" data-nav-id="/guides/reverse-engineering/x86-course/segment-registers/index.html"><a class="padding" href="/guides/reverse-engineering/x86-course/segment-registers/index.html">4. Segment Registers<i class="fa-fw fas fa-check read-icon"></i></a></li>
             <li class="" data-nav-id="/guides/reverse-engineering/x86-course/instruction-pointer-register/index.html"><a class="padding" href="/guides/reverse-engineering/x86-course/instruction-pointer-register/index.html">5. Instruction Pointer Register<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
             <li class="" data-nav-id="/guides/reverse-engineering/techniques/index.html"><a class="padding" href="/guides/reverse-engineering/techniques/index.html"><i class="fa-solid fa-book-open"></i> Techniques<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
@@ -204,11 +293,11 @@
             <li class="" data-nav-id="/guides/binary-exploitation/intro/index.html"><a class="padding" href="/guides/binary-exploitation/intro/index.html"><i class="fa-solid fa-book-open"></i> Intro<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li></ul></li>
             <li class="" data-nav-id="/troubleshooting/index.html"><input type="checkbox" id="R-section-9008353a49f797e5aee6cfd446175ed6" aria-controls="R-subsections-9008353a49f797e5aee6cfd446175ed6"><label for="R-section-9008353a49f797e5aee6cfd446175ed6"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Troubleshooting</span></label><a class="padding" href="/troubleshooting/index.html"><i class="fas fa-exclamation-triangle"></i> Troubleshooting<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-9008353a49f797e5aee6cfd446175ed6" class="collapsible-menu">
             <li class="" data-nav-id="/troubleshooting/kali-issues/index.html"><a class="padding" href="/troubleshooting/kali-issues/index.html"><i class="fa-solid fa-check"></i> Kali Issues<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
-            <li class="parent " data-nav-id="/services-protocols/index.html"><input type="checkbox" id="R-section-8bf863733bf1297ed9bfdecb49a849cd" aria-controls="R-subsections-8bf863733bf1297ed9bfdecb49a849cd" checked><label for="R-section-8bf863733bf1297ed9bfdecb49a849cd"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Services &amp; Protocols</span></label><a class="padding" href="/services-protocols/index.html"><i class="fas fa-cogs"></i> Services &amp; Protocols<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-8bf863733bf1297ed9bfdecb49a849cd" class="collapsible-menu">
+            <li class="" data-nav-id="/services-protocols/index.html"><input type="checkbox" id="R-section-8bf863733bf1297ed9bfdecb49a849cd" aria-controls="R-subsections-8bf863733bf1297ed9bfdecb49a849cd"><label for="R-section-8bf863733bf1297ed9bfdecb49a849cd"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Services &amp; Protocols</span></label><a class="padding" href="/services-protocols/index.html"><i class="fas fa-cogs"></i> Services &amp; Protocols<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-8bf863733bf1297ed9bfdecb49a849cd" class="collapsible-menu">
             <li class="" data-nav-id="/services-protocols/ssh/index.html"><a class="padding" href="/services-protocols/ssh/index.html"><i class="fas fa-gear"></i> SSH<i class="fa-fw fas fa-check read-icon"></i></a></li>
             <li class="" data-nav-id="/services-protocols/http/index.html"><a class="padding" href="/services-protocols/http/index.html"><i class="fas fa-gear"></i> HTTP<i class="fa-fw fas fa-check read-icon"></i></a></li>
             <li class="" data-nav-id="/services-protocols/ftp/index.html"><a class="padding" href="/services-protocols/ftp/index.html"><i class="fas fa-gear"></i> FTP<i class="fa-fw fas fa-check read-icon"></i></a></li>
-            <li class="active " data-nav-id="/services-protocols/dns/index.html"><a class="padding" href="/services-protocols/dns/index.html"><i class="fas fa-gear"></i> DNS<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="" data-nav-id="/services-protocols/dns/index.html"><a class="padding" href="/services-protocols/dns/index.html"><i class="fas fa-gear"></i> DNS<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
             <li class="" data-nav-id="/cheatsheets/index.html"><input type="checkbox" id="R-section-3735e222bf0c0345f8490886e0cb5a95" aria-controls="R-subsections-3735e222bf0c0345f8490886e0cb5a95"><label for="R-section-3735e222bf0c0345f8490886e0cb5a95"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Cheatsheets</span></label><a class="padding" href="/cheatsheets/index.html"><i class="fa-solid fa-keyboard"></i> Cheatsheets<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-3735e222bf0c0345f8490886e0cb5a95" class="collapsible-menu">
             <li class="" data-nav-id="/cheatsheets/windows/index.html"><input type="checkbox" id="R-section-e11d8de730fc0e838a6428ae89ea90fd" aria-controls="R-subsections-e11d8de730fc0e838a6428ae89ea90fd"><label for="R-section-e11d8de730fc0e838a6428ae89ea90fd"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Windows</span></label><a class="padding" href="/cheatsheets/windows/index.html"><i class="fab fa-windows"></i> Windows<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-e11d8de730fc0e838a6428ae89ea90fd" class="collapsible-menu">
             <li class="" data-nav-id="/cheatsheets/windows/runas/index.html"><a class="padding" href="/cheatsheets/windows/runas/index.html"><i class="fas fa-terminal"></i> runas<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
@@ -221,6 +310,7 @@
             <li class="" data-nav-id="/cheatsheets/programming/python/index.html"><a class="padding" href="/cheatsheets/programming/python/index.html"><i class="fa-solid fa-layer-group"></i> Python<i class="fa-fw fas fa-check read-icon"></i></a></li>
             <li class="" data-nav-id="/cheatsheets/programming/c&#43;&#43;/index.html"><a class="padding" href="/cheatsheets/programming/c&#43;&#43;/index.html"><i class="fa-solid fa-layer-group"></i> C&#43;&#43;<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
             <li class="" data-nav-id="/cheatsheets/tools/index.html"><input type="checkbox" id="R-section-1ed1948031a31f7834f447bf1283aec7" aria-controls="R-subsections-1ed1948031a31f7834f447bf1283aec7"><label for="R-section-1ed1948031a31f7834f447bf1283aec7"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Tools</span></label><a class="padding" href="/cheatsheets/tools/index.html"><i class="fa-solid fa-screwdriver-wrench"></i> Tools<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-1ed1948031a31f7834f447bf1283aec7" class="collapsible-menu">
+            <li class="" data-nav-id="/cheatsheets/tools/gdb/index.html"><a class="padding" href="/cheatsheets/tools/gdb/index.html"><i class="fa-solid fa-wrench"></i> Gdb<i class="fa-fw fas fa-check read-icon"></i></a></li>
             <li class="" data-nav-id="/cheatsheets/tools/binwalk/index.html"><a class="padding" href="/cheatsheets/tools/binwalk/index.html"><i class="fa-solid fa-wrench"></i> Binwalk<i class="fa-fw fas fa-check read-icon"></i></a></li>
             <li class="" data-nav-id="/cheatsheets/tools/steghide/index.html"><a class="padding" href="/cheatsheets/tools/steghide/index.html"><i class="fa-solid fa-wrench"></i> Steghide<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li></ul></li>
           </ul>
@@ -270,8 +360,8 @@
 <div id="R-footer"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/js/clipboard/clipboard.min.js?1756481385" defer></script>
-    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1756481385" defer></script>
-    <script src="/js/theme.js?1756481385" defer></script>
+    <script src="/js/clipboard/clipboard.min.js?1756486655" defer></script>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1756486655" defer></script>
+    <script src="/js/theme.js?1756486655" defer></script>
   </body>
 </html>

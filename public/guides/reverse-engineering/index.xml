@@ -3,13 +3,13 @@
   <channel>
     <title>Reverse Engineering :: Ultimate_x64_Notes</title>
     <link>http://localhost:1313/guides/reverse-engineering/index.html</link>
-    <description>Introduction Reverse engineering isn’t just about reading assembly instructions, loading your program and hunting for strings . It’s a detective story in which you trace data flows, identify encryption routines, and uncover logic flaws that reveal the program’s objective . Mastering this craft equips you to find vulnerabilities in real-world software and malware.&#xA;x86 Course Techniques</description>
+    <description>Introduction Reverse engineering isn’t just about reading assembly instructions, loading your program and hunting for strings . It’s a detective story in which you trace data flows, identify encryption routines, and uncover logic flaws that reveal the program’s objective . Mastering this craft equips you to find vulnerabilities in real-world software and malware.&#xA;0. x86 Course Techniques</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 28 Aug 2025 18:23:32 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/guides/reverse-engineering/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>x86 Course</title>
+      <title>0. x86 Course</title>
       <link>http://localhost:1313/guides/reverse-engineering/x86-course/index.html</link>
       <pubDate>Thu, 28 Aug 2025 18:23:32 -0400</pubDate>
       <guid>http://localhost:1313/guides/reverse-engineering/x86-course/index.html</guid>

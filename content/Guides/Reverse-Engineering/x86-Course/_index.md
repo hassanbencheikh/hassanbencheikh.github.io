@@ -1,5 +1,5 @@
 +++
-title = 'x86 Course'
+title = '0. x86 Course'
 date = 2025-08-28T18:23:32-04:00
 draft = true
 [params]
