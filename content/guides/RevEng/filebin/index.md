@@ -33,14 +33,15 @@ Executable file formats are `specialized` file types that contain instructions a
 In this part, I give you the `freedom` to choose what you need and look it up on Google. If you don’t understand something from the videos, keep searching and exploring—don’t give up! 😄❤️
 {{< /alert >}}
 
-## Portable Executable - Windows 
+## Portable Executable - Windows
+
+
 
 
 {{< youtubeLite id="OkX2lIf9YEM">}}
 <br>
 
-{{< youtubeLite id="WIdkwzKV6Zk">}}
-
++ [A dive into the PE format](https://0xrick.github.io/win-internals/pe2/) `<< Link`
 
 ### PE Tools and Analysis
 
@@ -50,6 +51,8 @@ In this part, I give you the `freedom` to choose what you need and look it up on
 ## Executable and Linkable Format - Linux
 
 {{< youtubeLite id="nC1U1LJQL8o">}}
+
++ [A dive into the ELF format](https://linux-audit.com/elf-binaries-on-linux-understanding-and-analysis/) `<< Link`
 
 ### ELF Tools and Analysis
 
@@ -61,6 +64,8 @@ In this part, I give you the `freedom` to choose what you need and look it up on
 ## Mach-O - Apple
 
 {{< youtubeLite id="-nPXpfiqmiw">}}
+
++ [A dive into the Mach-O format](https://oliviagallucci.com/the-anatomy-of-a-mach-o-structure-code-signing-and-pac/) `<< Link`
 
 ### Mach-O Tools and Analysis
 
