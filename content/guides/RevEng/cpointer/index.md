@@ -1,6 +1,6 @@
 +++
 date = '2025-09-01T10:12:31+01:00'
-draft = true
+draft = false
 title = '3. C Pointers & Memory Management'
 
 summary = "Master pointer manipulation and memory layout in C, with practical insights."

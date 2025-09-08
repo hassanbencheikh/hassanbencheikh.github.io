@@ -1,6 +1,6 @@
 +++
 date = '2025-09-03T16:46:21+01:00'
-draft = true
+draft = false
 title = '4. File Formats & Binary Structure'
 
 summary = "Overview of PE, ELF, and Mach-O structures with emphasis on headers, metadata, and resource analysis."

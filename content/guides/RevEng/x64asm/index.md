@@ -1,6 +1,6 @@
 +++
 date = '2025-08-31T01:14:45+01:00'
-draft = true
+draft = false
 title = '2. x64 Crash Course'
 
 summary = "Learn the fundamentals of the 64-bit architecture and assembly language."

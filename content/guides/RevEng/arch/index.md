@@ -1,6 +1,6 @@
 +++
 date = '2025-08-31T01:27:11+01:00'
-draft = true
+draft = false
 title = '0. Basic Components'
 summary = "Learn the foundational elements that make up a modern computer system."
 
