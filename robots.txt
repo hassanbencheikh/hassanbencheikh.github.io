@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://hassanbencheikh.github.io/sitemap.xml
