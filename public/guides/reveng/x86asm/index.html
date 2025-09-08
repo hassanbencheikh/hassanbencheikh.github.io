@@ -1,0 +1,2490 @@
+<!doctype html>
+<html
+  lang="en"
+  dir="ltr"
+  class="scroll-smooth"
+  data-default-appearance="dark"
+  data-auto-appearance="false"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+  
+    <meta http-equiv="content-language" content="en">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color">
+
+  
+  <title>1. x86 Crash Course &middot; Safe & Secure</title>
+    <meta name="title" content="1. x86 Crash Course &middot; Safe & Secure">
+
+  
+  <meta name="description" content="Learn the fundamentals of the 32-bit architecture and assembly language.">
+  
+  
+  
+  <link rel="canonical" href="http://localhost:1313/guides/reveng/x86asm/">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/main.bundle.min.ad3f0e90f13d453b5cf62f2f77acb9e5520ad9493b4780d0ee05aceaa9dd111e47eb6ac1293665d38ea2cd346869d37517a8211dfdc1b38e60bc3fbb01239652.css"
+    integrity="sha512-rT8OkPE9RTtc9i8vd6y55VIK2Uk7R4DQ7gWs6qndER5H62rBKTZl046izTRoadN1F6ghHf3Bs45gvD&#43;7ASOWUg==">
+
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/appearance.min.516a16745bea5a9bd011138d254cc0fd3973cd55ce6e15f3dec763e7c7c2c7448f8fe7b54cca811cb821b0c7e12cd161caace1dd794ac3d34d40937cbcc9ee12.js"
+    integrity="sha512-UWoWdFvqWpvQERONJUzA/TlzzVXObhXz3sdj58fCx0SPj&#43;e1TMqBHLghsMfhLNFhyqzh3XlKw9NNQJN8vMnuEg=="></script>
+  
+  
+    
+    
+    
+  
+  
+    
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    <script
+      defer
+      type="text/javascript"
+      id="script-bundle"
+      src="/js/main.bundle.min.23ea3460af5452ae8f79e1d229b2694d6acd1a8f21fc49784791d34b0b171648e4bf38275b7c39a9d11f1ac8f551b76a6381522262cfc1a1df6caaf9eb86adaa.js"
+      integrity="sha512-I&#43;o0YK9UUq6PeeHSKbJpTWrNGo8h/El4R5HTSwsXFkjkvzgnW3w5qdEfGsj1UbdqY4FSImLPwaHfbKr564atqg=="
+      data-copy="Copy"
+      data-copied="Copied"></script>
+  
+  
+    
+    <script src="/lib/zoom/zoom.min.umd.b4b722fcb5d42f34f52b30a92f3521b69f403ca9d96d0d6179eb537cb870f5d83fdf1fe836688d95d5c99fefbda4170487711006e56051fa67ea00da10521721.js" integrity="sha512-tLci/LXULzT1KzCpLzUhtp9APKnZbQ1heetTfLhw9dg/3x/oNmiNldXJn&#43;&#43;9pBcEh3EQBuVgUfpn6gDaEFIXIQ=="></script>
+  
+
+  
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+  <meta property="og:url" content="http://localhost:1313/guides/reveng/x86asm/">
+  <meta property="og:site_name" content="Safe & Secure">
+  <meta property="og:title" content="1. x86 Crash Course">
+  <meta property="og:description" content="Learn the fundamentals of the 32-bit architecture and assembly language.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="guides">
+    <meta property="article:published_time" content="2025-08-31T01:14:28+01:00">
+    <meta property="article:modified_time" content="2025-08-31T01:14:28+01:00">
+    <meta property="og:image" content="http://localhost:1313/guides/reveng/x86asm/featured.jpeg">
+
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/guides/reveng/x86asm/featured.jpeg">
+  <meta name="twitter:title" content="1. x86 Crash Course">
+  <meta name="twitter:description" content="Learn the fundamentals of the 32-bit architecture and assembly language.">
+<meta name="twitter:image" content="http://localhost:1313/guides/reveng/x86asm/featured.jpeg">
+    <meta property="og:image" content="http://localhost:1313/guides/reveng/x86asm/featured.jpeg">
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Guides",
+    "name": "1. x86 Crash Course",
+    "headline": "1. x86 Crash Course",
+    
+    "abstract": "Learn the fundamentals of the 32-bit architecture and assembly language.",
+    "inLanguage": "en",
+    "url" : "http:\/\/localhost:1313\/guides\/reveng\/x86asm\/",
+    "author" : {
+      "@type": "Person",
+      "name": "HoXoN"
+    },
+    "copyrightYear": "2025",
+    "dateCreated": "2025-08-31T01:14:28\u002b01:00",
+    "datePublished": "2025-08-31T01:14:28\u002b01:00",
+    
+    "dateModified": "2025-08-31T01:14:28\u002b01:00",
+    
+    
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "2220"
+  }]
+  </script>
+
+
+
+  
+  
+    <meta name="author" content="HoXoN">
+  
+  
+    
+      
+        
+      
+    
+      
+        
+          <link href="https://discord.gg/invitecode" rel="me">
+        
+      
+    
+      
+        
+          <link href="https://github.com/username" rel="me">
+        
+      
+    
+      
+        
+          <link href="https://linkedin.com/in/username" rel="me">
+        
+      
+    
+  
+
+  
+  
+
+<script src="/lib/jquery/jquery.slim.min.03cb160e3cfdb2667a2e2c80d283bebcf63ff8bbc4b629c9ab2babf6fae1d0c07ad470edae783efa4fabda2ac01c58d60e63b98b3c336be8208460f08f4354f5.js" integrity="sha512-A8sWDjz9smZ6LiyA0oO&#43;vPY/&#43;LvEtinJqyur9vrh0MB61HDtrng&#43;&#43;k&#43;r2irAHFjWDmO5izwza&#43;gghGDwj0NU9Q=="></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/lib/lite-youtube-embed/lite-yt-embed.cc5891ec7e6ed1fb2d99de7aed55ad7e90f7ebfb3b3f4e992d4bd45f5d5769fa7901e1c2b511eedd6b2a927cfa204101bc363234b2c843e1ad98ae93ac9a060f.css"
+    integrity="sha512-zFiR7H5u0fstmd567VWtfpD36/s7P06ZLUvUX11Xafp5AeHCtRHu3Wsqknz6IEEBvDYyNLLIQ&#43;GtmK6TrJoGDw==">
+  
+  
+  <script
+    type="text/javascript"
+    src="/lib/lite-youtube-embed/lite-yt-embed.86b6b182cbf262b1c6bc745086ba393a1c464ba219b6cf9ccc04329b075beec89ab5088077fd466d69e305466e6ecf1eb0b2c5fef0dc480e1fe4ccf466a5dfb4.js"
+    integrity="sha512-hraxgsvyYrHGvHRQhro5OhxGS6IZts&#43;czAQymwdb7siatQiAd/1GbWnjBUZubs8esLLF/vDcSA4f5Mz0ZqXftA=="></script>
+
+
+
+  
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+</head>
+<body
+    class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32 scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600">
+    <div id="the-top" class="absolute flex self-center">
+      <a
+        class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+        href="#main-content">
+        <span class="font-bold text-primary-600 ltr:pr-2 rtl:pl-2 dark:text-primary-400">&darr;</span>
+        Skip to main content
+      </a>
+    </div>
+    
+    
+      <div class="min-h-[148px]"></div>
+<div class="fixed inset-x-0 pl-[24px] pr-[24px] z-100">
+  <div
+    id="menu-blur"
+    class="absolute opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl shadow-2xl"></div>
+  <div class="relative max-w-[64rem] ml-auto mr-auto">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div
+  class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start gap-x-3 pt-[2px] pr-0 pb-[3px] pl-0">
+  
+  
+
+  <div class="flex flex-1 items-center justify-between">
+    <nav class="flex space-x-3">
+      
+        <a href="/" class="text-base font-medium text-gray-500 hover:text-gray-900">
+          Safe &amp; Secure
+        </a>
+      
+    </nav>
+    
+  <nav class="hidden md:flex items-center gap-x-5 md:ml-12 h-12">
+    
+      
+        
+  <a
+  href="/"
+  
+  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+  
+  <p class="text-base font-medium" title="">
+    Home
+  </p>
+</a>
+
+
+
+      
+        
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a
+      
+        href="/guides/"
+        
+      
+      class="text-base font-medium text-gray-500 hover:text-primary-600 dark:hover:text-primary-400"
+      title="Guides">
+      <p>
+        Guides
+      </p>
+    </a>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+          <a
+            href="/"
+            
+            class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="">
+              Web Exploitation
+            </p>
+          </a>
+        
+          <a
+            href="/guides/reveng/"
+            
+            class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="Reverse Engineering">
+              Reverse Engineering
+            </p>
+          </a>
+        
+          <a
+            href="/"
+            
+            class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="">
+              Binary Exploitation
+            </p>
+          </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+      
+        
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a
+      
+        href="/cheatsheets/"
+        
+      
+      class="text-base font-medium text-gray-500 hover:text-primary-600 dark:hover:text-primary-400"
+      title="Cheatsheets">
+      <p>
+        Cheatsheets
+      </p>
+    </a>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+          <a
+            href="/"
+            
+            class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="">
+              Linux
+            </p>
+          </a>
+        
+          <a
+            href="/"
+            
+            class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="">
+              Windows
+            </p>
+          </a>
+        
+          <a
+            href="/cheatsheets/tools/"
+            
+            class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+            
+            <p class="text-sm font-sm" title="Tools">
+              Tools
+            </p>
+          </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+      
+        
+  <a
+  href="/"
+  
+  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+  
+  <p class="text-base font-medium" title="">
+    Blog
+  </p>
+</a>
+
+
+
+      
+    
+
+    
+
+    
+
+    
+      <button
+        id="search-button"
+        aria-label="Search"
+        class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+        title="Search (/)">
+        <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+      </button>
+    
+
+    
+  </nav>
+
+    
+  <div class="flex md:hidden items-center gap-x-5 md:ml-12 h-12">
+    <span></span>
+
+    
+
+    
+
+    
+      <button
+        id="search-button-mobile"
+        aria-label="Search"
+        class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+        title="Search (/)">
+        <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+      </button>
+    
+
+    
+  </div>
+
+  </div>
+  
+  <div class="-my-2 md:hidden">
+    <div id="menu-button" class="block">
+      
+        <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+</span>
+        </div>
+        <div
+          id="menu-wrapper"
+          class="fixed inset-0 z-30 invisible w-screen h-screen m-0 overflow-auto transition-opacity opacity-0 cursor-default bg-neutral-100/50 backdrop-blur-sm dark:bg-neutral-900/50 pt-[5px]">
+          <ul
+            class="flex space-y-2 mt-3 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none ltr:text-right rtl:text-left max-w-7xl">
+            <li id="menu-close-button">
+              <span
+                class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400">
+                <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+              </span>
+            </li>
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/"
+    
+    class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-bg font-bg" title="">
+      Home
+    </p>
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/guides/"
+    class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-bg font-bg" title="Guides">
+      Guides
+    </p>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </a>
+</li>
+
+  <li class="mt-1">
+    <a
+      href="/"
+      
+      class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="">
+        Web Exploitation
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/guides/reveng/"
+      
+      class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="Reverse Engineering">
+        Reverse Engineering
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/"
+      
+      class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="">
+        Binary Exploitation
+      </p>
+    </a>
+  </li>
+
+<li class="mb-2"></li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/cheatsheets/"
+    class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-bg font-bg" title="Cheatsheets">
+      Cheatsheets
+    </p>
+    <span>
+      <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+    </span>
+  </a>
+</li>
+
+  <li class="mt-1">
+    <a
+      href="/"
+      
+      class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="">
+        Linux
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/"
+      
+      class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="">
+        Windows
+      </p>
+    </a>
+  </li>
+
+  <li class="mt-1">
+    <a
+      href="/cheatsheets/tools/"
+      
+      class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+      
+      <p class="text-sm font-small" title="Tools">
+        Tools
+      </p>
+    </a>
+  </li>
+
+<li class="mb-2"></li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/"
+    
+    class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-bg font-bg" title="">
+      Blog
+    </p>
+  </a>
+</li>
+
+
+
+            
+
+          </ul>
+          
+        </div>
+      
+    </div>
+  </div>
+
+</div>
+
+
+
+
+  <script>
+    (function () {
+      var $mainmenu = $(".main-menu");
+      var path = window.location.pathname;
+      $mainmenu.find('a[href="' + path + '"]').each(function (i, e) {
+        $(e).children("p").addClass("active");
+      });
+    })();
+  </script>
+
+
+  </div>
+</div>
+
+
+<script
+  type="text/javascript"
+  src="/js/background-blur.min.0ad33cb9c066f652728b2cc09c9ceaf32645544f48e8b6b38f120d86f433ed997da275a49e6151fe0176430c45376812708d84727f3f969101fb44a4345b3f34.js"
+  integrity="sha512-CtM8ucBm9lJyiyzAnJzq8yZFVE9I6LazjxINhvQz7Zl9onWknmFR/gF2QwxFN2gScI2Ecn8/lpEB&#43;0SkNFs/NA=="
+  data-target-id="menu-blur"></script>
+
+    
+    <div class="relative flex flex-col grow">
+      <main id="main-content" class="grow">
+        
+  
+  <article>
+    
+    
+      
+      
+      
+      
+        
+
+
+    <div id="hero" class="h-[150px] md:h-[200px]"></div>
+  
+  <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom">
+    
+    
+      
+    
+    <img
+      id="background-image"
+      src="/guides/reveng/x86asm/featured_hu_23458912e217604b.jpeg"
+      alt="Background Image"
+      class="absolute inset-0 w-full h-full object-cover">
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-neutral dark:from-neutral-800 to-transparent mix-blend-normal"></div>
+    <div
+      class="absolute inset-0 opacity-60 bg-gradient-to-t from-neutral dark:from-neutral-800 to-neutral-100 dark:to-neutral-800 mix-blend-normal"></div>
+  </div>
+
+  
+    <div
+      id="background-blur"
+      class="fixed opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl"></div>
+    
+    
+    <script
+      type="text/javascript"
+      src="/js/background-blur.min.0ad33cb9c066f652728b2cc09c9ceaf32645544f48e8b6b38f120d86f433ed997da275a49e6151fe0176430c45376812708d84727f3f969101fb44a4345b3f34.js"
+      integrity="sha512-CtM8ucBm9lJyiyzAnJzq8yZFVE9I6LazjxINhvQz7Zl9onWknmFR/gF2QwxFN2gScI2Ecn8/lpEB&#43;0SkNFs/NA=="
+      data-target-id="background-blur"
+      data-image-id="background-image"
+      data-image-url="/guides/reveng/x86asm/featured.jpeg"></script>
+  
+      
+    
+
+    
+    <header id="single_header" class="mt-5 max-w-prose">
+      
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        1. x86 Crash Course
+      </h1>
+      <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+        
+
+
+
+
+
+  
+  
+
+
+
+  
+
+  
+  
+  
+
+  
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="2025-08-31T01:14:28&#43;01:00">31 August 2025</time><span class="px-2 text-primary-500">&middot;</span><span>2220 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">11 mins</span>
+    
+
+    
+    
+  </div>
+
+  
+
+  
+  
+
+  
+  
+
+
+
+      </div>
+      
+        
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+    
+    
+<div class="flex author">
+  
+    
+    
+      
+    
+    
+      
+        
+      
+      <img
+        class="!mt-0 !mb-0 h-24 w-24 rounded-full ltr:mr-4 rtl:ml-4"
+        width="96"
+        height="96"
+        alt="HoXoN"
+        src="/img/pica_hu_16cf695ba69ad93e.jpeg">
+    
+  
+  <div class="place-self-center">
+    
+      <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+        Author
+      </div>
+      <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+        HoXoN
+      </div>
+    
+    
+    <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="mailto:hello@your_domain.com"
+          target="_blank"
+          aria-label="Email"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M207.8 20.73c-93.45 18.32-168.7 93.66-187 187.1c-27.64 140.9 68.65 266.2 199.1 285.1c19.01 2.888 36.17-12.26 36.17-31.49l.0001-.6631c0-15.74-11.44-28.88-26.84-31.24c-84.35-12.98-149.2-86.13-149.2-174.2c0-102.9 88.61-185.5 193.4-175.4c91.54 8.869 158.6 91.25 158.6 183.2l0 16.16c0 22.09-17.94 40.05-40 40.05s-40.01-17.96-40.01-40.05v-120.1c0-8.847-7.161-16.02-16.01-16.02l-31.98 .0036c-7.299 0-13.2 4.992-15.12 11.68c-24.85-12.15-54.24-16.38-86.06-5.106c-38.75 13.73-68.12 48.91-73.72 89.64c-9.483 69.01 43.81 128 110.9 128c26.44 0 50.43-9.544 69.59-24.88c24 31.3 65.23 48.69 109.4 37.49C465.2 369.3 496 324.1 495.1 277.2V256.3C495.1 107.1 361.2-9.332 207.8 20.73zM239.1 304.3c-26.47 0-48-21.56-48-48.05s21.53-48.05 48-48.05s48 21.56 48 48.05S266.5 304.3 239.1 304.3z"/></svg>
+</span></span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://discord.gg/invitecode"
+          target="_blank"
+          aria-label="Discord"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="currentColor" d="M524.531,69.836a1.5,1.5,0,0,0-.764-.7A485.065,485.065,0,0,0,404.081,32.03a1.816,1.816,0,0,0-1.923.91,337.461,337.461,0,0,0-14.9,30.6,447.848,447.848,0,0,0-134.426,0,309.541,309.541,0,0,0-15.135-30.6,1.89,1.89,0,0,0-1.924-.91A483.689,483.689,0,0,0,116.085,69.137a1.712,1.712,0,0,0-.788.676C39.068,183.651,18.186,294.69,28.43,404.354a2.016,2.016,0,0,0,.765,1.375A487.666,487.666,0,0,0,176.02,479.918a1.9,1.9,0,0,0,2.063-.676A348.2,348.2,0,0,0,208.12,430.4a1.86,1.86,0,0,0-1.019-2.588,321.173,321.173,0,0,1-45.868-21.853,1.885,1.885,0,0,1-.185-3.126c3.082-2.309,6.166-4.711,9.109-7.137a1.819,1.819,0,0,1,1.9-.256c96.229,43.917,200.41,43.917,295.5,0a1.812,1.812,0,0,1,1.924.233c2.944,2.426,6.027,4.851,9.132,7.16a1.884,1.884,0,0,1-.162,3.126,301.407,301.407,0,0,1-45.89,21.83,1.875,1.875,0,0,0-1,2.611,391.055,391.055,0,0,0,30.014,48.815,1.864,1.864,0,0,0,2.063.7A486.048,486.048,0,0,0,610.7,405.729a1.882,1.882,0,0,0,.765-1.352C623.729,277.594,590.933,167.465,524.531,69.836ZM222.491,337.58c-28.972,0-52.844-26.587-52.844-59.239S193.056,219.1,222.491,219.1c29.665,0,53.306,26.82,52.843,59.239C275.334,310.993,251.924,337.58,222.491,337.58Zm195.38,0c-28.971,0-52.843-26.587-52.843-59.239S388.437,219.1,417.871,219.1c29.667,0,53.307,26.82,52.844,59.239C470.715,310.993,447.538,337.58,417.871,337.58Z"/></svg>
+</span></span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://github.com/username"
+          target="_blank"
+          aria-label="Github"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</span></span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://linkedin.com/in/username"
+          target="_blank"
+          aria-label="Linkedin"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+</span></span></a
+        >
+      
+    
+  </div>
+
+</div>
+  </div>
+</div>
+
+  
+
+  
+
+  
+    <div class="mb-5"></div>
+  
+
+      
+    </header>
+
+    
+    <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+      
+      
+      
+      
+      
+        <div class="order-first lg:ml-auto px-0 lg:order-last ltr:lg:pl-8 rtl:lg:pr-8">
+          <div class="toc ltr:pl-5 rtl:pr-5 print:hidden lg:sticky lg:top-[140px]">
+            
+              <details
+  open
+  id="TOCView"
+  class="toc-right mt-0 overflow-y-auto overscroll-contain scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600 rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 hidden lg:block">
+  <summary
+    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="min-w-[220px] py-2 border-dotted ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#modes-of-operation">Modes of Operation</a>
+      <ul>
+        <li><a href="#protected-mode-modern-default">Protected Mode (Modern Default)</a></li>
+        <li><a href="#virtual-8086-mode-sub-mode-of-protected-mode">Virtual-8086 Mode (Sub-mode of Protected Mode)</a></li>
+        <li><a href="#real-address-mode-old-school-mode">Real-Address Mode (Old-School Mode)</a></li>
+        <li><a href="#system-management-mode-smm">System Management Mode (SMM)</a></li>
+      </ul>
+    </li>
+    <li><a href="#basic-execution-environment">Basic Execution Environment</a>
+      <ul>
+        <li><a href="#address-space">Address Space</a></li>
+      </ul>
+    </li>
+    <li><a href="#basic-program-execution-registers">Basic Program Execution Registers</a>
+      <ul>
+        <li><a href="#32-bit-general-purpose-registers">32-bit General-Purpose Registers</a></li>
+        <li><a href="#specialized-uses-of-general-purpose-registers">Specialized Uses of General-Purpose Registers</a></li>
+        <li><a href="#segment-registers">Segment Registers</a></li>
+        <li><a href="#instruction-pointer">Instruction Pointer</a></li>
+        <li><a href="#eflags-register">EFLAGS Register</a>
+          <ul>
+            <li><a href="#control-flags">Control Flags</a></li>
+            <li><a href="#status-flags">Status Flags</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#intel64-for-64-bit-processing">Intel64 for 64-bit Processing</a>
+      <ul>
+        <li><a href="#ia-32e-mode">IA-32e Mode</a></li>
+      </ul>
+    </li>
+    <li><a href="#common-assembly-instructions">Common Assembly instructions</a></li>
+    <li><a href="#addressing">Addressing</a></li>
+    <li><a href="#the-stack">The Stack</a>
+      <ul>
+        <li><a href="#stack-instructions">Stack Instructions</a></li>
+        <li><a href="#extended-stack-instructions">Extended Stack Instructions</a></li>
+      </ul>
+    </li>
+    <li><a href="#the-heap">The Heap</a>
+      <ul>
+        <li><a href="#key-points">Key Points</a></li>
+        <li><a href="#code-snippet">code snippet</a></li>
+      </ul>
+    </li>
+    <li><a href="#conditional-jumps">Conditional Jumps</a>
+      <ul>
+        <li><a href="#instructions">Instructions</a></li>
+        <li><a href="#word">WORD</a></li>
+      </ul>
+    </li>
+    <li><a href="#basic-examples">Basic Examples</a>
+      <ul>
+        <li><a href="#stack-frame">Stack frame</a></li>
+        <li><a href="#bonus">Bonus</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</details>
+<details class="toc-inside mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 lg:hidden">
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#modes-of-operation">Modes of Operation</a>
+      <ul>
+        <li><a href="#protected-mode-modern-default">Protected Mode (Modern Default)</a></li>
+        <li><a href="#virtual-8086-mode-sub-mode-of-protected-mode">Virtual-8086 Mode (Sub-mode of Protected Mode)</a></li>
+        <li><a href="#real-address-mode-old-school-mode">Real-Address Mode (Old-School Mode)</a></li>
+        <li><a href="#system-management-mode-smm">System Management Mode (SMM)</a></li>
+      </ul>
+    </li>
+    <li><a href="#basic-execution-environment">Basic Execution Environment</a>
+      <ul>
+        <li><a href="#address-space">Address Space</a></li>
+      </ul>
+    </li>
+    <li><a href="#basic-program-execution-registers">Basic Program Execution Registers</a>
+      <ul>
+        <li><a href="#32-bit-general-purpose-registers">32-bit General-Purpose Registers</a></li>
+        <li><a href="#specialized-uses-of-general-purpose-registers">Specialized Uses of General-Purpose Registers</a></li>
+        <li><a href="#segment-registers">Segment Registers</a></li>
+        <li><a href="#instruction-pointer">Instruction Pointer</a></li>
+        <li><a href="#eflags-register">EFLAGS Register</a>
+          <ul>
+            <li><a href="#control-flags">Control Flags</a></li>
+            <li><a href="#status-flags">Status Flags</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#intel64-for-64-bit-processing">Intel64 for 64-bit Processing</a>
+      <ul>
+        <li><a href="#ia-32e-mode">IA-32e Mode</a></li>
+      </ul>
+    </li>
+    <li><a href="#common-assembly-instructions">Common Assembly instructions</a></li>
+    <li><a href="#addressing">Addressing</a></li>
+    <li><a href="#the-stack">The Stack</a>
+      <ul>
+        <li><a href="#stack-instructions">Stack Instructions</a></li>
+        <li><a href="#extended-stack-instructions">Extended Stack Instructions</a></li>
+      </ul>
+    </li>
+    <li><a href="#the-heap">The Heap</a>
+      <ul>
+        <li><a href="#key-points">Key Points</a></li>
+        <li><a href="#code-snippet">code snippet</a></li>
+      </ul>
+    </li>
+    <li><a href="#conditional-jumps">Conditional Jumps</a>
+      <ul>
+        <li><a href="#instructions">Instructions</a></li>
+        <li><a href="#word">WORD</a></li>
+      </ul>
+    </li>
+    <li><a href="#basic-examples">Basic Examples</a>
+      <ul>
+        <li><a href="#stack-frame">Stack frame</a></li>
+        <li><a href="#bonus">Bonus</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+
+<script>
+  (function () {
+    'use strict'
+
+    const SCROLL_OFFSET_RATIO = 0.33
+    const TOC_SELECTOR = '#TableOfContents'
+    const ANCHOR_SELECTOR = '.anchor'
+    const TOC_LINK_SELECTOR = 'a[href^="#"]'
+    const NESTED_LIST_SELECTOR = 'li ul'
+    const ACTIVE_CLASS = 'active'
+
+    function getActiveAnchorId(anchors, offsetRatio) {
+      const threshold = window.scrollY + window.innerHeight * offsetRatio
+      const tocLinks = [...document.querySelectorAll('#TableOfContents a[href^="#"]')]
+      const tocIds = new Set(tocLinks.map(link => link.getAttribute('href').substring(1)))
+
+      for (let i = anchors.length - 1; i >= 0; i--) {
+        const top = anchors[i].getBoundingClientRect().top + window.scrollY
+        if (top <= threshold && tocIds.has(anchors[i].id)) {
+          return anchors[i].id
+        }
+      }
+      return anchors.find(anchor => tocIds.has(anchor.id))?.id || ''
+    }
+
+    function updateTOC({ toc, anchors, links, scrollOffset, collapseInactive }) {
+      const activeId = getActiveAnchorId(anchors, scrollOffset)
+      if (!activeId) return
+
+      links.forEach(link => {
+        const isActive = link.getAttribute('href') === `#${activeId}`
+        link.classList.toggle(ACTIVE_CLASS, isActive)
+
+        if (collapseInactive) {
+          const ul = link.closest('li')?.querySelector('ul')
+          if (ul) ul.style.display = isActive ? '' : 'none'
+        }
+      })
+
+      if (collapseInactive) {
+        const activeLink = toc.querySelector(`a[href="#${CSS.escape(activeId)}"]`)
+        let el = activeLink
+        while (el && el !== toc) {
+          if (el.tagName === 'UL') el.style.display = ''
+          if (el.tagName === 'LI') el.querySelector('ul')?.style.setProperty('display', '')
+          el = el.parentElement
+        }
+      }
+    }
+
+    function initTOC() {
+      const toc = document.querySelector(TOC_SELECTOR)
+      if (!toc) return
+
+      const collapseInactive = false
+      const anchors = [...document.querySelectorAll(ANCHOR_SELECTOR)]
+      const links = [...toc.querySelectorAll(TOC_LINK_SELECTOR)]
+
+      if (collapseInactive) {
+        toc.querySelectorAll(NESTED_LIST_SELECTOR).forEach(ul => ul.style.display = 'none')
+      }
+
+      const config = {
+        toc,
+        anchors,
+        links,
+        scrollOffset: SCROLL_OFFSET_RATIO,
+        collapseInactive
+      }
+
+      window.addEventListener('scroll', () => updateTOC(config), { passive: true })
+      window.addEventListener('hashchange', () => updateTOC(config), { passive: true })
+
+      updateTOC(config)
+    }
+
+    document.readyState === 'loading'
+      ? document.addEventListener('DOMContentLoaded', initTOC)
+      : initTOC()
+  })()
+</script>
+
+
+            
+            
+          </div>
+        </div>
+      
+
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+
+        <div class="article-content max-w-prose mb-20">
+          <lite-youtube videoid="75gBFiFtAb8" playlabel="75gBFiFtAb8" params=""></lite-youtube>
+
+<p>The <code>x86 architecture</code> is one of the most widely used processor designs in the world.<br>
+It powers everything from classic PCs running MS-DOS to modern operating systems like Windows and Linux.</p>
+
+  
+  
+  
+  
+
+
+
+<div
+  
+    class="flex px-4 py-3 rounded-md" style="background-color: #448012ff"
+  
+  >
+  <span
+    
+      class="ltr:pr-3 rtl:pl-3 flex items-center" style="color: #df4646ff"
+    
+    >
+    <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<path fill="currentColor" d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg></span>
+  </span>
+
+  <span
+    
+      style="color: #f1faee"
+    
+    >Just be patient and try to gather as much information as possible before the learning-by-doing phase.</span>
+</div>
+
+
+<h2 class="relative group">Modes of Operation 
+    <div id="modes-of-operation" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#modes-of-operation" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>The <code>x86 processor family</code> (Intel IA-32 and 32-bit AMD) can work in different &ldquo;modes.&rdquo;<br>
+These modes decide <code>how programs run</code> and <code>what level of control they have</code> over the system.</p>
+
+<h3 class="relative group">Protected Mode (Modern Default) 
+    <div id="protected-mode-modern-default" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#protected-mode-modern-default" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<ul>
+<li>The <code>native mode</code> of modern x86 CPUs.</li>
+<li>Each program gets its own memory space (<code>segments</code>).</li>
+<li>Prevents one program from interfering with others.</li>
+<li>Used in most modern operating systems (Windows, Linux, etc.).</li>
+</ul>
+
+<h3 class="relative group">Virtual-8086 Mode (Sub-mode of Protected Mode) 
+    <div id="virtual-8086-mode-sub-mode-of-protected-mode" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#virtual-8086-mode-sub-mode-of-protected-mode" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<ul>
+<li>Lets old programs (like <code>MS-DOS software</code>) run safely inside Protected Mode.</li>
+<li>Creates a <code>sandbox environment</code> for legacy code.</li>
+<li>Example: Windows XP could run multiple DOS programs at the same time.</li>
+</ul>
+
+<h3 class="relative group">Real-Address Mode (Old-School Mode) 
+    <div id="real-address-mode-old-school-mode" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#real-address-mode-old-school-mode" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<ul>
+<li>Works like the original <code>Intel 8086</code> CPU.</li>
+<li>Programs have <code>direct access</code> to memory and hardware.</li>
+<li>No protection → one bad program can crash the whole system.</li>
+<li>Common in older systems like <code>MS-DOS</code> or <code>Windows 98</code>.</li>
+</ul>
+
+<h3 class="relative group">System Management Mode (SMM) 
+    <div id="system-management-mode-smm" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#system-management-mode-smm" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<ul>
+<li>A <code>special hidden mode</code> not used by normal programs.</li>
+<li>Handles <code>low-level system tasks</code> such as:
+<ul>
+<li><code>Power management</code> (sleep, battery)</li>
+<li><code>Security checks</code></li>
+</ul>
+</li>
+<li>Runs invisibly in the background, controlled by the BIOS or hardware vendor</li>
+</ul>
+
+<h2 class="relative group">Basic Execution Environment 
+    <div id="basic-execution-environment" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#basic-execution-environment" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+
+<h3 class="relative group">Address Space 
+    <div id="address-space" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#address-space" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<ul>
+<li>In <code>32-bit protected mode</code>, a program can address a <code>linear address space of up to 4 GB</code>.</li>
+<li>Starting with the <code>P6 processor</code>, <code>Extended Physical Addressing</code> allows up to <code>64 GB</code> of physical memory.</li>
+<li>In <code>real-address mode</code>, programs can only address <code>1 MB</code> of memory.</li>
+<li>In <code>virtual-8086 mode</code>, each program has its own <code>1 MB address space</code>, even if multiple programs are running.</li>
+</ul>
+
+  
+  
+  
+  
+
+
+
+<div
+  
+    class="flex px-4 py-3 rounded-md" style="background-color: #2ab91dff"
+  
+  >
+  <span
+    
+      class="ltr:pr-3 rtl:pl-3 flex items-center" style="color: #1c70e6ff"
+    
+    >
+    <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 128c17.67 0 32 14.33 32 32c0 17.67-14.33 32-32 32S224 177.7 224 160C224 142.3 238.3 128 256 128zM296 384h-80C202.8 384 192 373.3 192 360s10.75-24 24-24h16v-64H224c-13.25 0-24-10.75-24-24S210.8 224 224 224h32c13.25 0 24 10.75 24 24v88h16c13.25 0 24 10.75 24 24S309.3 384 296 384z"/></svg>
+</span>
+  </span>
+
+  <span
+    
+      style="color: #f1faee"
+    
+    >In 32-bit x86, registers and memory addresses are 32 bits wide.
+A 32-bit number can represent <strong>2^32 = 4,294,967,296</strong> unique values.
+That means the maximum addressable space = 4 GB <strong>(from 0x00000000 to 0xFFFFFFFF)</strong>.</span>
+</div>
+
+
+<h2 class="relative group">Basic Program Execution Registers 
+    <div id="basic-program-execution-registers" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#basic-program-execution-registers" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>Registers are <code>high-speed storage locations</code> inside the CPU.<br>
+They are much faster to access than memory, so loops and critical data often use registers instead of variables.</p>
+<p>There are:</p>
+<ul>
+<li>8 general-purpose registers</li>
+<li>6 segment registers</li>
+<li>1 processor status flags register (EFLAGS)</li>
+<li>1 instruction pointer (EIP)</li>
+</ul>
+
+<h3 class="relative group">32-bit General-Purpose Registers 
+    <div id="32-bit-general-purpose-registers" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#32-bit-general-purpose-registers" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p><code>EAX</code> <code>EBX</code> <code>ECX</code> <code>EDX</code> <code>EBP</code> <code>ESP</code> <code>ESI</code> <code>EDI</code></p>
+<p>Each of these 32-bit registers can also be accessed in smaller parts:</p>
+<table>
+  <thead>
+      <tr>
+          <th>32-Bit</th>
+          <th>16-Bit</th>
+          <th>8-Bit (High)</th>
+          <th>8-Bit (Low)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>EAX</code></td>
+          <td><code>AX</code></td>
+          <td><code>AH</code></td>
+          <td><code>AL</code></td>
+      </tr>
+      <tr>
+          <td><code>EBX</code></td>
+          <td><code>BX</code></td>
+          <td><code>BH</code></td>
+          <td><code>BL</code></td>
+      </tr>
+      <tr>
+          <td><code>ECX</code></td>
+          <td><code>CX</code></td>
+          <td><code>CH</code></td>
+          <td><code>CL</code></td>
+      </tr>
+      <tr>
+          <td><code>EDX</code></td>
+          <td><code>DX</code></td>
+          <td><code>DH</code></td>
+          <td><code>DL</code></td>
+      </tr>
+  </tbody>
+</table>
+<p>The remaining general-purpose registers can only be accessed using 32-bit or 16-bit names,
+as shown in the following table:</p>
+<table>
+  <thead>
+      <tr>
+          <th>32-Bit</th>
+          <th>16-Bit</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>ESI</code></td>
+          <td><code>SI</code></td>
+      </tr>
+      <tr>
+          <td><code>EDI</code></td>
+          <td><code>DI</code></td>
+      </tr>
+      <tr>
+          <td><code>EBP</code></td>
+          <td><code>BP</code></td>
+      </tr>
+      <tr>
+          <td><code>ESP</code></td>
+          <td><code>SP</code></td>
+      </tr>
+  </tbody>
+</table>
+<p>
+
+
+
+
+
+
+<figure>
+      <img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low"
+    alt="Alt text"
+    srcset="
+      /guides/reveng/x86asm/img/regs_hu_cd38de2be8b9c95a.png  330w,
+      /guides/reveng/x86asm/img/regs_hu_f8f6a67ec64dd01d.png  660w,
+      /guides/reveng/x86asm/img/regs_hu_cb603f4714f2370a.png 1280w
+    "
+    data-zoom-src="/guides/reveng/x86asm/img/regs.png"
+    src="/guides/reveng/x86asm/img/regs.png">
+
+  
+</figure>
+</p>
+
+<h3 class="relative group">Specialized Uses of General-Purpose Registers 
+    <div id="specialized-uses-of-general-purpose-registers" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#specialized-uses-of-general-purpose-registers" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<ul>
+<li><code>EAX</code>: used automatically for multiplication and division. Known as the <code>accumulator register</code>.</li>
+<li><code>ECX</code>: used automatically as a <code>loop counter</code>.</li>
+<li><code>ESP</code>: points to the <code>stack</code> (<code>extended stack pointer</code>). Rarely used for general arithmetic.</li>
+<li><code>ESI / EDI</code>: used for <code>fast memory transfers</code> (<code>source</code> and <code>destination index registers</code>).</li>
+<li><code>EBP</code>: used by high-level languages to reference <code>function parameters</code> and <code>local variables</code> (<code>extended frame pointer</code>).</li>
+</ul>
+
+<h3 class="relative group">Segment Registers 
+    <div id="segment-registers" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#segment-registers" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<ul>
+<li>In <code>real-address mode</code>, segment registers contain <code>base addresses</code> of memory areas (<code>code</code>, <code>data</code>, <code>stack</code>).</li>
+<li>In <code>protected mode</code>, they point to <code>segment descriptor tables</code> instead.</li>
+<li>Segment registers: <code>CS</code>, <code>SS</code>, <code>DS</code>, <code>ES</code>, <code>FS</code>, <code>GS</code>.</li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Register</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>CS</code> (Code Segment)</td>
+          <td>Points to the segment containing the executable program code. Instructions are fetched from the <code>CS</code> segment.</td>
+      </tr>
+      <tr>
+          <td><code>DS</code> (Data Segment)</td>
+          <td>Points to the segment containing the data used by the program. Most memory references come from the <code>DS</code> segment.</td>
+      </tr>
+      <tr>
+          <td><code>SS</code> (Stack Segment)</td>
+          <td>Points to the segment containing the stack, used for storing temporary data such as function parameters, return addresses, and local variables.</td>
+      </tr>
+      <tr>
+          <td><code>ES</code> (Extra Segment)</td>
+          <td>Points to an additional data segment that can be used for various purposes, such as string operations.</td>
+      </tr>
+      <tr>
+          <td><code>FS</code> / <code>GS</code></td>
+          <td>Introduced with the Intel 80386 processor. Can be used for special purposes, such as thread-local storage or per-CPU data.</td>
+      </tr>
+  </tbody>
+</table>
+
+<h3 class="relative group">Instruction Pointer 
+    <div id="instruction-pointer" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#instruction-pointer" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<ul>
+<li>The <code>EIP register</code> contains the <code>address of the next instruction</code> to be executed.</li>
+<li>Certain instructions change <code>EIP</code> to branch to new code locations.</li>
+</ul>
+
+<h3 class="relative group">EFLAGS Register 
+    <div id="eflags-register" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#eflags-register" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>The <code>EFLAGS register</code> contains <code>binary flags</code> that either:</p>
+<ul>
+<li>Control how the CPU operates (<code>control flags</code>)</li>
+<li>Reflect the result of operations (<code>status flags</code>)</li>
+</ul>
+
+<h4 class="relative group">Control Flags 
+    <div id="control-flags" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#control-flags" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<ul>
+<li>Allow the CPU to break after each instruction.</li>
+<li>Enable interrupts.</li>
+<li>Switch into <code>protected mode</code> or <code>virtual-8086 mode</code>.</li>
+</ul>
+
+<h4 class="relative group">Status Flags 
+    <div id="status-flags" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#status-flags" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>These reflect outcomes of arithmetic and logic operations:</p>
+<ul>
+<li><code>CF (Carry flag)</code>: set if an unsigned result is too large.</li>
+<li><code>OF (Overflow flag)</code>: set if a signed result is too large or too small.</li>
+<li><code>SF (Sign flag)</code>: set if the result is negative.</li>
+<li><code>ZF (Zero flag)</code>: set if the result is zero.</li>
+<li><code>AF (Auxiliary Carry)</code>: set if a carry occurs from bit 3 to bit 4 in 8-bit operations.</li>
+<li><code>PF (Parity flag)</code>: set if the lowest byte has an even number of 1 bits.</li>
+</ul>
+
+<h2 class="relative group">Intel64 for 64-bit Processing 
+    <div id="intel64-for-64-bit-processing" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#intel64-for-64-bit-processing" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p><code>Intel64</code> is Intel’s version of the <code>x86-64 architecture</code>, originally developed by AMD.<br>
+It allows processors to use a <code>64-bit linear address space</code>, meaning programs can theoretically access a huge amount of memory. In practice, processors usually implement slightly less than the full 64 bits.<br>
+The <code>physical memory</code> supported can exceed <code>64 GB</code>.</p>
+<p><code>Intel64</code> is <strong>backward compatible</strong> with 32-bit programs, so older software runs without performance loss.</p>
+<ul>
+<li>First used in the <code>Pentium Extreme</code> processor</li>
+<li>Also found in <code>Intel Xeon</code>, <code>Celeron D</code>, <code>Pentium D</code>, <code>Core 2</code>, <code>Core i7</code>, <code>Atom</code>, and newer Pentium 4 processors</li>
+</ul>
+
+<h3 class="relative group">IA-32e Mode 
+    <div id="ia-32e-mode" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#ia-32e-mode" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>Intel64 supports all the old IA-32 modes (Protected, Real-address, System Management) plus a new <code>IA-32e mode</code> for 64-bit processing.</p>
+<p><code>IA-32e mode</code> has two sub-modes for 64-bit operating systems like Windows Vista or Linux:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Sub-mode</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>Compatibility Mode</code></td>
+          <td>Runs legacy 16-bit and 32-bit programs without recompilation. Operands are 16 or 32 bits, and the addressable memory range is <code>4 GB</code>.</td>
+      </tr>
+      <tr>
+          <td><code>64-bit Mode</code></td>
+          <td>Uses <code>64-bit addresses</code> and operands, a greater number of registers, and extra instructions for handling large data. Memory segmentation is disabled, providing a flat <code>64-bit linear-address space</code>. Applications in 64-bit mode cannot use real-address or segmented modes.</td>
+      </tr>
+  </tbody>
+</table>
+
+  
+  
+  
+  
+
+
+
+<div
+  
+    class="flex px-4 py-3 rounded-md" style="background-color: #2ab91dff"
+  
+  >
+  <span
+    
+      class="ltr:pr-3 rtl:pl-3 flex items-center" style="color: #1c70e6ff"
+    
+    >
+    <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 128c17.67 0 32 14.33 32 32c0 17.67-14.33 32-32 32S224 177.7 224 160C224 142.3 238.3 128 256 128zM296 384h-80C202.8 384 192 373.3 192 360s10.75-24 24-24h16v-64H224c-13.25 0-24-10.75-24-24S210.8 224 224 224h32c13.25 0 24 10.75 24 24v88h16c13.25 0 24 10.75 24 24S309.3 384 296 384z"/></svg>
+</span>
+  </span>
+
+  <span
+    
+      style="color: #f1faee"
+    
+    >Programs on a 64-bit OS can run in <code>Compatibility mode</code> (older software) or <code>64-bit mode</code> (modern software).<br>
+This allows mixing old and new programs safely.<br>
+Intel64 processors are used across many Intel families, but specifications vary.</span>
+</div>
+
+
+<h2 class="relative group">Common Assembly instructions 
+    <div id="common-assembly-instructions" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#common-assembly-instructions" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<ul>
+<li>Before diving into <code>assembly instructions</code>, I recommend watching this video. It explains how the CPU works in detail, and even if you already know the basics, you’ll gain deeper insight into how <code>opcodes</code>, <code>instructions</code>, and <code>flags</code> work under the hood.</li>
+</ul>
+<lite-youtube videoid="cNN_tTXABUA" playlabel="cNN_tTXABUA" params=""></lite-youtube>
+
+<p><code>mov</code> — moves data from one location to another without modification.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">mov</span> <span class="no">destination</span><span class="p">,</span> <span class="no">source</span>
+</span></span></code></pre></div><p><code>add</code> — arithmetic addition; adds a value to the destination and stores the result.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">add</span> <span class="no">destination</span><span class="p">,</span> <span class="no">value</span>
+</span></span></code></pre></div><p><code>sub</code> — arithmetic subtraction.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">sub</span> <span class="no">destination</span><span class="p">,</span> <span class="no">value</span>
+</span></span></code></pre></div><p><code>inc</code> — increments the destination by 1.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">inc</span> <span class="no">destination</span>
+</span></span></code></pre></div><p><code>dec</code> — decrements the destination by 1.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">dec</span> <span class="no">destination</span>
+</span></span></code></pre></div><p><code>lea</code> — load effective address; calculates an address and stores it in the destination (not the memory contents).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">lea</span> <span class="no">destination</span><span class="p">,</span> <span class="no">value</span>
+</span></span></code></pre></div><p><code>cmp</code> — compares two operands by subtracting the source from the destination.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">cmp</span> <span class="no">destination</span><span class="p">,</span> <span class="no">source</span>
+</span></span></code></pre></div><p>The result is <code>not stored</code> anywhere, but the <strong>EFLAGS</strong> register is updated<br>
+(Zero flag, Sign flag, Carry flag, Overflow flag, etc.) so that conditional jumps can act on it.</p>
+<p><code>jmp</code> — jumps to a new location, changing the instruction pointer.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">jmp</span> <span class="no">destination</span>
+</span></span></code></pre></div><p>Other logic operations like <code>or</code>, <code>and</code>, and <code>xor</code> follow similar addressing rules as <code>add</code> and <code>sub</code>.</p>
+
+<h2 class="relative group">Addressing 
+    <div id="addressing" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#addressing" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<ul>
+<li>
+<p>Instructions may require one or more operands.</p>
+</li>
+<li>
+<p>When an instruction uses two operands, the second is the source, which contains data or an address.</p>
+</li>
+<li>
+<p>Addressing uses segment registers and comes in three types:</p>
+</li>
+</ul>
+<p><code>Register addressing</code> — the operand is in a register</p>
+<p><code>Immediate addressing</code> — the operand is a constant in the instruction</p>
+<p><code>Register and memory addressing</code> — the operand points to a memory location</p>
+<p><code>Return Address</code> — a parameter that tells a function where to resume execution after it finishes. Functions can be called from multiple locations, so the return address ensures correct program flow.</p>
+<lite-youtube videoid="5OJRqkYbK-4" playlabel="5OJRqkYbK-4" params=""></lite-youtube>
+
+
+<h2 class="relative group">The Stack 
+    <div id="the-stack" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#the-stack" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<ul>
+<li>
+<p>Each active function call has a <code>stack frame</code> storing all local variables.</p>
+</li>
+<li>
+<p>All active frames are stored on the <code>Stack</code>, a critical memory structure.</p>
+</li>
+<li>
+<p>The stack holds <code>temporary data</code>, function parameters, return addresses, and more.</p>
+</li>
+<li>
+<p>Stack memory is <code>static</code> (allocated at compile-time), unlike <code>the heap</code>, which is dynamic (malloc() / new).</p>
+</li>
+<li>
+<p><code>LIFO</code> behavior: Last In, First Out</p>
+</li>
+<li>
+<p><code>Stack grows downwards</code>: from high memory addresses to low addresses.</p>
+</li>
+</ul>
+<p>
+
+
+
+
+
+
+<figure>
+      <img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low"
+    alt="Alt text"
+    srcset="
+      /guides/reveng/x86asm/img/stack_hu_445ffc907f256054.png  330w,
+      /guides/reveng/x86asm/img/stack_hu_9cc4280a7bb8dcd1.png  660w,
+      /guides/reveng/x86asm/img/stack_hu_aaf84c0d0f028c81.png 1280w
+    "
+    data-zoom-src="/guides/reveng/x86asm/img/stack.png"
+    src="/guides/reveng/x86asm/img/stack.png">
+
+  
+</figure>
+</p>
+
+<h3 class="relative group">Stack Instructions 
+    <div id="stack-instructions" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#stack-instructions" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p><code>push value</code> — decrements <strong>ESP</strong> by the size of <strong>value</strong> and copies it to the top of the stack.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">push</span> <span class="no">value</span>
+</span></span></code></pre></div><p><code>pop destination</code> — copies the <strong>value</strong> from the top of the stack to the destination and increments <strong>ESP</strong>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">pop</span> <span class="no">destination</span>
+</span></span></code></pre></div>
+<h3 class="relative group">Extended Stack Instructions 
+    <div id="extended-stack-instructions" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#extended-stack-instructions" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+
+  
+  
+  
+  
+
+
+
+<div
+  
+    class="flex px-4 py-3 rounded-md" style="background-color: #e07935ff"
+  
+  >
+  <span
+    
+      class="ltr:pr-3 rtl:pl-3 flex items-center" style="color: #1c70e6ff"
+    
+    >
+    <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 128c17.67 0 32 14.33 32 32c0 17.67-14.33 32-32 32S224 177.7 224 160C224 142.3 238.3 128 256 128zM296 384h-80C202.8 384 192 373.3 192 360s10.75-24 24-24h16v-64H224c-13.25 0-24-10.75-24-24S210.8 224 224 224h32c13.25 0 24 10.75 24 24v88h16c13.25 0 24 10.75 24 24S309.3 384 296 384z"/></svg>
+</span>
+  </span>
+
+  <span
+    
+      style="color: #f1faee"
+    
+    ><p>These are often used by malware or low-level programs:</p>
+<ul>
+<li>
+<p><code>pusha</code> — pushes all 16-bit registers (<code>AX</code>, <code>CX</code>, <code>DX</code>, <code>BX</code>, <code>SP</code>, <code>BP</code>, <code>SI</code>, <code>DI</code>) onto the stack.</p>
+</li>
+<li>
+<p><code>pushad</code> — pushes all 32-bit registers (<code>EAX</code>, <code>ECX</code>, <code>EDX</code>, <code>EBX</code>, <code>ESP</code>, <code>EBP</code>, <code>ESI</code>, <code>EDI</code>) onto the stack.</p>
+</li>
+<li>
+<p><code>popa</code> — pops all 16-bit registers (inverse of <code>pusha</code>).</p>
+</li>
+<li>
+<p><code>popad</code> — pops all 32-bit registers (inverse of <code>pushad</code>).</p>
+</li>
+</ul>
+</span>
+</div>
+
+
+<h2 class="relative group">The Heap 
+    <div id="the-heap" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#the-heap" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<ul>
+<li>The <strong>Heap</strong> is a memory region used for <strong>dynamic memory allocation</strong>.</li>
+<li>Unlike the stack (which is managed automatically), memory in the heap must be <strong>explicitly requested</strong> (<code>malloc()</code>, <code>calloc()</code>, <code>new</code>) and <strong>freed</strong> (<code>free()</code>, <code>delete</code>).</li>
+<li>Heap memory persists until freed — it does not vanish after a function returns.</li>
+<li>It’s generally <strong>larger</strong> than the stack but also <strong>slower</strong> because it requires system calls and bookkeeping.</li>
+<li>Heap memory is prone to <strong>fragmentation</strong> and vulnerabilities (e.g., <strong>heap overflows</strong>, <strong>use-after-free</strong>, <strong>double free</strong>).</li>
+<li>Managed in <strong>low-level C libraries</strong> by functions like <code>brk()</code> and <code>mmap()</code> in Linux.</li>
+</ul>
+<img src="img/heap.png" alt="Heap illustration" width="300"/>
+
+<h3 class="relative group">Key Points 
+    <div id="key-points" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#key-points" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<ul>
+<li><strong>Flexible size</strong>: Allocate as much as needed (until OS limits).</li>
+<li><strong>Manual management</strong>: Programmer must release memory, or else leaks occur.</li>
+<li><strong>Unordered growth</strong>: Unlike the stack’s LIFO model, the heap does not enforce a strict order.</li>
+<li><strong>Heap grows upwards</strong>: From low memory addresses to higher ones (opposite to stack).</li>
+</ul>
+
+<h3 class="relative group">code snippet 
+    <div id="code-snippet" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#code-snippet" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="o">*</span><span class="n">arr</span> <span class="o">=</span> <span class="nf">malloc</span><span class="p">(</span><span class="mi">10</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span> <span class="c1">// allocate space for 10 ints
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">free</span><span class="p">(</span><span class="n">arr</span><span class="p">);</span>                           <span class="c1">// release memory
+</span></span></span></code></pre></div>
+<h2 class="relative group">Conditional Jumps 
+    <div id="conditional-jumps" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#conditional-jumps" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>Conditional jumps change the flow of execution based on the result of the <strong>previous comparison</strong> (<code>cmp</code>) or arithmetic instruction.<br>
+They rely on <strong>EFLAGS</strong> (Zero flag, Sign flag, Carry flag, Overflow flag, etc.).</p>
+
+<h3 class="relative group">Instructions 
+    <div id="instructions" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#instructions" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p><code>je</code> — Jump if Equal (a.k.a. <code>jz</code>, Jump if Zero).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">cmp</span> <span class="no">eax</span><span class="p">,</span> <span class="no">ebx</span>
+</span></span><span class="line"><span class="cl"><span class="nf">je</span> <span class="no">equal_label</span>      <span class="c1">; jump if eax == ebx
+</span></span></span></code></pre></div><p><code>jne</code> — Jump if Not Equal</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">cmp</span> <span class="no">eax</span><span class="p">,</span> <span class="no">ebx</span>
+</span></span><span class="line"><span class="cl"><span class="nf">jne</span> <span class="no">equal_label</span>      <span class="c1">; jump if eax == ebx
+</span></span></span></code></pre></div><ul>
+<li>
+<p><code>ja</code> — Jump if Above (a.k.a. <code>jnbe</code>, Jump if Not Below or Equal)</p>
+</li>
+<li>
+<p><code>jae</code> — Jump if Above or Equal (a.k.a. <code>jnb</code>, Jump if Not Below)</p>
+</li>
+<li>
+<p><code>jb</code> — Jump if Below (a.k.a. <code>jnae</code>, Jump if Not Above or Equal)</p>
+</li>
+<li>
+<p><code>jbe</code> — Jump if Below or Equal (a.k.a. <code>jna</code>, Jump if Not Above)</p>
+</li>
+<li>
+<p><code>jg</code> — Jump if Greater (a.k.a. <code>jnle</code>, Jump if Not Less or Equal)</p>
+</li>
+<li>
+<p><code>jge</code> — Jump if Greater or Equal (a.k.a. <code>jnl</code>, Jump if Not Less)</p>
+</li>
+<li>
+<p><code>jl</code> — Jump if Less (a.k.a. <code>jnge</code>, Jump if Not Greater or Equal)</p>
+</li>
+<li>
+<p><code>jle</code> — Jump if Less or Equal (a.k.a. <code>jng</code>, Jump if Not Greater)</p>
+</li>
+<li>
+<p><code>js</code> — Jump if Sign (negative)</p>
+</li>
+<li>
+<p><code>jns</code> — Jump if Not Sign (non-negative)</p>
+</li>
+<li>
+<p><code>jo</code> — Jump if Overflow</p>
+</li>
+<li>
+<p><code>jno</code> — Jump if Not Overflow</p>
+</li>
+<li>
+<p><code>jc</code> — Jump if Carry</p>
+</li>
+<li>
+<p><code>jnc</code> — Jump if Not Carry</p>
+</li>
+<li>
+<p><code>jp</code> — Jump if Parity (a.k.a. <code>jpe</code>, Jump if Parity Even)</p>
+</li>
+<li>
+<p><code>jnp</code> — Jump if Not Parity (a.k.a. <code>jpo</code>, Jump if Parity Odd)</p>
+</li>
+</ul>
+
+<h3 class="relative group">WORD 
+    <div id="word" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#word" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>A <strong>WORD</strong> is just <code>two bytes</code> of data. A <strong>DWORD</strong> is <code>four bytes</code> of data. A <strong>QWORD</strong> is <code>eight bytes</code> of data.</p>
+
+<h2 class="relative group">Basic Examples 
+    <div id="basic-examples" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#basic-examples" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+
+<h3 class="relative group">Stack frame 
+    <div id="stack-frame" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#stack-frame" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>In this example, we&rsquo;ll compile a simple C program and inspect how the <code>function interacts with the stack</code> during execution. This will help us understand how local and global variables are stored and accessed in memory.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">M</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// Global variable
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">add_func</span><span class="p">(</span><span class="kt">int</span> <span class="n">var</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">L</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// Local variable
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">L</span> <span class="o">=</span> <span class="n">M</span> <span class="o">+</span> <span class="n">var</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">L</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;The result is %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">add_func</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>To compile the program in <code>32-bit</code> mode :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gcc -m32 stack_frame.c -o stack_frame <span class="c1"># mode : 32-bit</span>
+</span></span></code></pre></div><p>To verify the format :</p>
+<pre tabindex="0"><code>file stack_frame
+stack_frame: ELF 32-bit LSB pie executable, Intel 80386 ...
+</code></pre><p>
+
+
+
+
+
+
+<figure>
+      <img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low"
+    alt="alt text"
+    srcset="
+      /guides/reveng/x86asm/img/stack_frame_hu_7251eedd89e1c053.png  330w,
+      /guides/reveng/x86asm/img/stack_frame_hu_1b00d34b4b92b0c9.png  660w,
+      /guides/reveng/x86asm/img/stack_frame_hu_879768ea0ee062b7.png 1280w
+    "
+    data-zoom-src="/guides/reveng/x86asm/img/stack_frame.png"
+    src="/guides/reveng/x86asm/img/stack_frame.png">
+
+  
+</figure>
+</p>
+<ul>
+<li><strong>Function Prologue</strong> :</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">push</span> <span class="no">ebp</span>
+</span></span><span class="line"><span class="cl"><span class="nf">mov</span> <span class="no">ebp</span><span class="p">,</span> <span class="no">esp</span>
+</span></span><span class="line"><span class="cl"><span class="nf">sub</span> <span class="no">esp</span><span class="p">,</span> <span class="mi">0x10</span> <span class="c1">#(1*16^1 + 0*16^0 = 16)
+</span></span></span></code></pre></div>
+  
+  
+  
+  
+
+
+
+<div
+  
+    class="flex px-4 py-3 rounded-md" style="background-color: #3093e4ff"
+  
+  >
+  <span
+    
+      class="ltr:pr-3 rtl:pl-3 flex items-center" style="color: #1d3557"
+    
+    >
+    <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 128c17.67 0 32 14.33 32 32c0 17.67-14.33 32-32 32S224 177.7 224 160C224 142.3 238.3 128 256 128zM296 384h-80C202.8 384 192 373.3 192 360s10.75-24 24-24h16v-64H224c-13.25 0-24-10.75-24-24S210.8 224 224 224h32c13.25 0 24 10.75 24 24v88h16c13.25 0 24 10.75 24 24S309.3 384 296 384z"/></svg>
+</span>
+  </span>
+
+  <span
+    
+      style="color: #f1faee"
+    
+    >Saves the previous base pointer.<br>
+Sets up a new stack frame for the function.<br>
+Allocates space for local variables (16 bytes in this case).</span>
+</div>
+
+<ul>
+<li><strong>Accessing the Global Variable</strong> <code>M</code> :</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">call</span> <span class="no">__x86.get_pc_thunk.ax</span>
+</span></span><span class="line"><span class="cl"><span class="nf">add</span> <span class="no">eax</span><span class="p">,</span><span class="mi">0x2e30</span>
+</span></span><span class="line"><span class="cl"><span class="nf">mov</span> <span class="no">edx</span><span class="p">,</span> <span class="p">[</span><span class="no">eax</span><span class="err">+</span><span class="mi">0x30</span><span class="p">]</span>
+</span></span></code></pre></div>
+  
+  
+  
+  
+
+
+
+<div
+  
+    class="flex px-4 py-3 rounded-md" style="background-color: #3093e4ff"
+  
+  >
+  <span
+    
+      class="ltr:pr-3 rtl:pl-3 flex items-center" style="color: #1d3557"
+    
+    >
+    <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 128c17.67 0 32 14.33 32 32c0 17.67-14.33 32-32 32S224 177.7 224 160C224 142.3 238.3 128 256 128zM296 384h-80C202.8 384 192 373.3 192 360s10.75-24 24-24h16v-64H224c-13.25 0-24-10.75-24-24S210.8 224 224 224h32c13.25 0 24 10.75 24 24v88h16c13.25 0 24 10.75 24 24S309.3 384 296 384z"/></svg>
+</span>
+  </span>
+
+  <span
+    
+      style="color: #f1faee"
+    
+    >Global variables are stored in the data segment, not the stack.
+These instructions calculate the address of M and load its value.</span>
+</div>
+
+<ul>
+<li><strong>Accessing the Function Parameter</strong> <code>var</code> :</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">mov</span> <span class="no">eax</span><span class="p">,</span> <span class="p">[</span><span class="no">ebp</span><span class="err">+</span><span class="mi">0x8</span><span class="p">]</span>
+</span></span></code></pre></div>
+  
+  
+  
+  
+
+
+
+<div
+  
+    class="flex px-4 py-3 rounded-md" style="background-color: #3093e4ff"
+  
+  >
+  <span
+    
+      class="ltr:pr-3 rtl:pl-3 flex items-center" style="color: #1d3557"
+    
+    >
+    <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 128c17.67 0 32 14.33 32 32c0 17.67-14.33 32-32 32S224 177.7 224 160C224 142.3 238.3 128 256 128zM296 384h-80C202.8 384 192 373.3 192 360s10.75-24 24-24h16v-64H224c-13.25 0-24-10.75-24-24S210.8 224 224 224h32c13.25 0 24 10.75 24 24v88h16c13.25 0 24 10.75 24 24S309.3 384 296 384z"/></svg>
+</span>
+  </span>
+
+  <span
+    
+      style="color: #f1faee"
+    
+    >Parameters are passed on the stack.
+<code>[ebp+0x8]</code> points to the first argument <code>var</code>.</span>
+</div>
+
+<ul>
+<li><strong>Performing the Addition</strong> :</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">add</span> <span class="no">eax</span><span class="p">,</span> <span class="no">edx</span>
+</span></span><span class="line"><span class="cl"><span class="nf">mov</span> <span class="p">[</span><span class="no">ebp-0x4</span><span class="p">],</span> <span class="no">eax</span>
+</span></span></code></pre></div>
+  
+  
+  
+  
+
+
+
+<div
+  
+    class="flex px-4 py-3 rounded-md" style="background-color: #3093e4ff"
+  
+  >
+  <span
+    
+      class="ltr:pr-3 rtl:pl-3 flex items-center" style="color: #1d3557"
+    
+    >
+    <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 128c17.67 0 32 14.33 32 32c0 17.67-14.33 32-32 32S224 177.7 224 160C224 142.3 238.3 128 256 128zM296 384h-80C202.8 384 192 373.3 192 360s10.75-24 24-24h16v-64H224c-13.25 0-24-10.75-24-24S210.8 224 224 224h32c13.25 0 24 10.75 24 24v88h16c13.25 0 24 10.75 24 24S309.3 384 296 384z"/></svg>
+</span>
+  </span>
+
+  <span
+    
+      style="color: #f1faee"
+    
+    >Adds <code>M</code> and <code>var</code>.
+Stores the result in the local variable <code>L</code>.</span>
+</div>
+
+<ul>
+<li><strong>Function Epilogue</strong> :</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">mov</span> <span class="no">eax</span><span class="p">,</span> <span class="p">[</span><span class="no">ebp-0x4</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nf">leave</span>
+</span></span><span class="line"><span class="cl"><span class="nf">ret</span>
+</span></span></code></pre></div>
+  
+  
+  
+  
+
+
+
+<div
+  
+    class="flex px-4 py-3 rounded-md" style="background-color: #3093e4ff"
+  
+  >
+  <span
+    
+      class="ltr:pr-3 rtl:pl-3 flex items-center" style="color: #1d3557"
+    
+    >
+    <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 128c17.67 0 32 14.33 32 32c0 17.67-14.33 32-32 32S224 177.7 224 160C224 142.3 238.3 128 256 128zM296 384h-80C202.8 384 192 373.3 192 360s10.75-24 24-24h16v-64H224c-13.25 0-24-10.75-24-24S210.8 224 224 224h32c13.25 0 24 10.75 24 24v88h16c13.25 0 24 10.75 24 24S309.3 384 296 384z"/></svg>
+</span>
+  </span>
+
+  <span
+    
+      style="color: #f1faee"
+    
+    >Moves <code>L</code> into <code>eax</code> to return it.
+Restores the previous stack frame and returns to the caller.</span>
+</div>
+
+
+<h3 class="relative group">Bonus 
+    <div id="bonus" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#bonus" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<lite-youtube videoid="EXIxAPITb7U" playlabel="EXIxAPITb7U" params=""></lite-youtube>
+
+<br>
+<a
+  class="!rounded-md bg-primary-600 px-4 py-2 !text-neutral !no-underline hover:!bg-primary-500 dark:bg-primary-800 dark:hover:!bg-primary-700"
+  href="img/x64_cheatsheet.pdf"
+  target="_blank"
+  
+  role="button">
+  
+📄 CheatSheet : x86_64
+
+</a>
+
+
+          
+          
+          
+        </div>
+        
+        
+
+        
+
+        
+
+      </div>
+
+      
+      
+        
+        
+          
+          
+        
+        
+        
+        <script
+          type="text/javascript"
+          src="/js/page.min.54b6f4371722649edbe871e431d8670d670878c22be8f36e229fe53cc9b786fe25a834def5e6de621f7a3e37b72bc8cd73839aa5ed907ed6cbd45cd3e1b0fa20.js"
+          integrity="sha512-VLb0NxciZJ7b6HHkMdhnDWcIeMIr6PNuIp/lPMm3hv4lqDTe9ebeYh96Pje3K8jNc4Oape2QftbL1FzT4bD6IA=="
+          data-oid="views_guides\RevEng\x86asm\index.md"
+          data-oid-likes="likes_guides\RevEng\x86asm\index.md"></script>
+      
+    </section>
+
+    
+    <footer class="pt-8 max-w-prose print:hidden">
+      
+  
+    
+    
+    
+      
+      
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600">
+      <div class="flex justify-between pt-3">
+        <span>
+          
+            <a class="flex group mr-3" href="/guides/reveng/arch/">
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span class="flex flex-col">
+                <span class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >0. Basic Components</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2025-08-31T01:27:11&#43;01:00">31 August 2025</time>
+                  
+                </span>
+              </span>
+            </a>
+          
+        </span>
+        <span>
+          
+            <a class="flex text-right group ml-3" href="/guides/reveng/x64asm/">
+              <span class="flex flex-col">
+                <span class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >2. x64 Crash Course</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2025-08-31T01:14:45&#43;01:00">31 August 2025</time>
+                  
+                </span>
+              </span>
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+            </a>
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+      
+    </footer>
+  </article>
+
+        <div id="top-scroller" class="pointer-events-none absolute top-[110vh] bottom-0 w-12 ltr:right-0 rtl:left-0 z-10">
+  <a
+    href="#the-top"
+    class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 mb-16 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label="Scroll to top"
+    title="Scroll to top">
+    &uarr;
+  </a>
+</div>
+
+      </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+  
+  <div class="flex items-center justify-between">
+    
+    
+      <p class="text-sm text-neutral-500 dark:text-neutral-400">
+          &copy;
+          2025
+          HoXoN
+      </p>
+    
+
+    
+    
+      <p class="text-xs text-neutral-500 dark:text-neutral-400">
+        
+        
+        Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+          href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+          href="https://blowfish.page/" target="_blank" rel="noopener noreferrer">Blowfish</a>
+      </p>
+    
+  </div>
+  
+    <script>
+      mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+        margin: 24,
+        background: "rgba(0,0,0,0.5)",
+        scrollOffset: 0,
+      });
+    </script>
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/process.min.ee03488f19c93c2efb199e2e3014ea5f3cb2ce7d45154adb3399a158cac27ca52831db249ede5bb602700ef87eb02434139de0858af1818ab0fb4182472204a4.js"
+    integrity="sha512-7gNIjxnJPC77GZ4uMBTqXzyyzn1FFUrbM5mhWMrCfKUoMdsknt5btgJwDvh&#43;sCQ0E53ghYrxgYqw&#43;0GCRyIEpA=="></script>
+  
+  
+</footer>
+<div
+  id="search-wrapper"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh] z-500"
+  data-url="http://localhost:1313/">
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800">
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="Search"
+          tabindex="0">
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="Close (Esc)">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+    </div>
+  </body>
+  
+</html>
