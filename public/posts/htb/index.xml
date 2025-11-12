@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>HackTheBox on Safe &amp; Secure</title>
+    <link>http://localhost:1313/posts/htb/</link>
+    <description>Recent content in HackTheBox on Safe &amp; Secure</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>youremail@example.com (HoXoN)</managingEditor>
+    <webMaster>youremail@example.com (HoXoN)</webMaster>
+    <copyright>© 2025 HoXoN</copyright>
+    <lastBuildDate>Wed, 12 Nov 2025 18:10:33 +0100</lastBuildDate><atom:link href="http://localhost:1313/posts/htb/index.xml" rel="self" type="application/rss+xml" />
+    
+  </channel>
+</rss>

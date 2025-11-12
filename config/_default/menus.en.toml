@@ -35,8 +35,8 @@
  
 
 [[main]]
- name = "Blog"
- pageRef = "/"
+ name = "Posts"
+ pageRef = "/posts"
  weight = 40
 
 [[main]]
