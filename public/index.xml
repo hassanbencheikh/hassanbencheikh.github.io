@@ -62,7 +62,17 @@
     </item>
     
     <item>
-      <title>Lockpick2</title>
+      <title>Lockpick</title>
+      <link>http://localhost:1313/posts/htb/sherlocks/malwareanalysis/lockpick/</link>
+      <pubDate>Wed, 12 Nov 2025 22:13:47 +0100</pubDate>
+      <author>youremail@example.com (HoXoN)</author>
+      <guid>http://localhost:1313/posts/htb/sherlocks/malwareanalysis/lockpick/</guid>
+      <description></description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/htb/sherlocks/malwareanalysis/lockpick/featured.png" />
+    </item>
+    
+    <item>
+      <title>Lockpick2.0</title>
       <link>http://localhost:1313/posts/htb/sherlocks/malwareanalysis/lockpick2/</link>
       <pubDate>Wed, 12 Nov 2025 18:34:43 +0100</pubDate>
       <author>youremail@example.com (HoXoN)</author>
