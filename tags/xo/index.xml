@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>XO on Safe &amp; Secure</title>
+    <link>http://localhost:1313/tags/xo/</link>
+    <description>Recent content in XO on Safe &amp; Secure</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>youremail@example.com (HoXoN)</managingEditor>
+    <webMaster>youremail@example.com (HoXoN)</webMaster>
+    <copyright>© 2025 HoXoN</copyright>
+    <lastBuildDate>Wed, 12 Nov 2025 22:13:47 +0100</lastBuildDate><atom:link href="http://localhost:1313/tags/xo/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Lockpick</title>
+      <link>http://localhost:1313/posts/htb/sherlocks/malwareanalysis/lockpick/</link>
+      <pubDate>Wed, 12 Nov 2025 22:13:47 +0100</pubDate>
+      <author>youremail@example.com (HoXoN)</author>
+      <guid>http://localhost:1313/posts/htb/sherlocks/malwareanalysis/lockpick/</guid>
+      <description></description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/htb/sherlocks/malwareanalysis/lockpick/featured.png" />
+    </item>
+    
+  </channel>
+</rss>
